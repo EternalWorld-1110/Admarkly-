@@ -1,8 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { CarKey, Variant } from "./types";
-import { CARS, fmt, fmtShort, getFeatures, DEALER, VEHICLE_COLORS, VEHICLE_ACCESSORIES, calculateBhRto } from "./data/cars";
+import { CARS, fmt, fmtShort, getFeatures, DEALER, VEHICLE_COLORS, VEHICLE_ACCESSORIES, calculateBhRto, getEligibleColors } from "./data/cars";
 import VoiceAssistant from "./components/VoiceAssistant";
 import QuotationPreview from "./components/QuotationPreview";
+import VehicleLogo from "./components/VehicleLogo";
 import { 
   Car, 
   User, 
@@ -46,6 +47,16 @@ export default function App() {
   const selectedCar = carKey ? CARS[carKey] : null;
   const fuelTypes = selectedCar ? Object.keys(selectedCar.variants) : [];
   const variants = selectedCar && fuelType ? selectedCar.variants[fuelType] : [];
+
+  // Auto-align selected paint color based on variant eligibility
+  useEffect(() => {
+    if (!variant || !carKey) return;
+    const eligible = getEligibleColors(carKey as CarKey, variant.name);
+    const isStillEligible = selectedColor && eligible.some(c => c.name === selectedColor.name);
+    if (!isStillEligible && eligible.length > 0) {
+      setSelectedColor(eligible[0]);
+    }
+  }, [variant, carKey, selectedColor]);
 
   const accessoriesTotal = useMemo(() => {
     return selectedAccessories.reduce((sum, item) => sum + item.price, 0);
@@ -259,7 +270,7 @@ export default function App() {
                         }}
                         className="p-4 rounded-2xl border text-center relative overflow-hidden transition-all duration-200 hover:scale-[1.02] cursor-pointer flex flex-col items-center justify-center gap-2"
                       >
-                        <span className="text-3xl filter drop-shadow select-none">{item.emoji}</span>
+                        <VehicleLogo carKey={key} isSelected={isSelected} size="md" className="mb-0.5" />
                         <span
                           className="text-xs font-bold font-display"
                           style={{
@@ -336,10 +347,15 @@ export default function App() {
                         >
                           <div>
                             <div
-                              className="text-xs font-bold leading-tight"
+                              className="text-xs font-bold leading-tight flex flex-wrap items-center gap-1.5"
                               style={{ color: isSelected ? accent : "rgba(244,244,245,0.9)" }}
                             >
-                              {v.name}
+                              <span>{v.name.replace(/\bDK\b/g, "DARK").replace(/\bRDK\b/g, "RED DARK")}</span>
+                              {(v.name.includes("DK") || v.name.includes("RDK") || v.name.toUpperCase().includes("DARK")) && (
+                                <span className="bg-zinc-950 border border-amber-500/30 text-[9px] font-mono font-black text-amber-500 px-1.5 py-0.5 rounded leading-none select-none tracking-wider shrink-0">
+                                  DARK (BLACK COLOR)
+                                </span>
+                              )}
                             </div>
                             <div className="text-[10px] text-zinc-500 font-mono mt-0.5">
                               Ex-Showroom: {fmtShort(v.ex)}
@@ -427,7 +443,7 @@ export default function App() {
                   </label>
                   <div className="bg-zinc-950/40 border border-zinc-900 p-4 rounded-2xl space-y-3">
                     <div className="flex flex-wrap gap-2.5">
-                      {(VEHICLE_COLORS[carKey as CarKey] || []).map((color) => {
+                      {(variant ? getEligibleColors(carKey as CarKey, variant.name) : VEHICLE_COLORS[carKey as CarKey] || []).map((color) => {
                         const isSelected = selectedColor?.name === color.name;
                         return (
                           <button

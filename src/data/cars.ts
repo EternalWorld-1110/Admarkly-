@@ -461,26 +461,44 @@ export const CARS: Record<CarKey, CarDetails> = {
         { name: "PURE X AT", ex: 1753190, ins: 84638, rto: 218741, tcs: 17532, onroad: 2074101 },
         { name: "PURE X DK AT", ex: 1791090, ins: 86215, rto: 223380, tcs: 17911, onroad: 2118596 },
         { name: "ADVENTURE X AT", ex: 1847290, ins: 88552, rto: 230259, tcs: 18473, onroad: 2184574 },
+        { name: "ADVENTURE X DK AT", ex: 1889990, ins: 90328, rto: 235485, tcs: 18900, onroad: 2234703 },
         { name: "ADVENTURE X PLUS AT", ex: 1874390, ins: 89679, rto: 233576, tcs: 18744, onroad: 2216389 },
+        { name: "ADVENTURE X PLUS DK AT", ex: 1926390, ins: 91842, rto: 239941, tcs: 19264, onroad: 2277437 },
         { name: "FEARLESS X AT", ex: 2178890, ins: 102343, rto: 293071, tcs: 21789, onroad: 2596093 },
+        { name: "FEARLESS X DK AT", ex: 2230890, ins: 104506, rto: 299967, tcs: 22309, onroad: 2657672 },
         { name: "FEARLESS X PLUS AT", ex: 2353890, ins: 109622, rto: 316276, tcs: 23539, onroad: 2803327 },
+        { name: "FEARLESS X PLUS DK AT", ex: 2405890, ins: 111784, rto: 323172, tcs: 24059, onroad: 2864905 },
         { name: "FEARLESS UL AT", ex: 2413890, ins: 112117, rto: 324232, tcs: 24139, onroad: 2874378 },
         { name: "FEARLESS UL RDK AT", ex: 2468890, ins: 114405, rto: 331525, tcs: 24689, onroad: 2939509 },
       ],
       "Diesel MT": [
         { name: "SMART DIESEL", ex: 1399990, ins: 69948, rto: 204069, tcs: 14000, onroad: 1688007 },
         { name: "PURE X DIESEL", ex: 1714990, ins: 83049, rto: 249051, tcs: 17150, onroad: 2064240 },
+        { name: "PURE X DIESEL DK", ex: 1779990, ins: 85753, rto: 258333, tcs: 17800, onroad: 2141875 },
         { name: "ADVENTURE X DIESEL", ex: 1814990, ins: 87208, rto: 263331, tcs: 18150, onroad: 2183679 },
+        { name: "ADVENTURE X DIESEL DK", ex: 1869990, ins: 89496, rto: 271185, tcs: 18700, onroad: 2249370 },
         { name: "ADVENTURE X PLUS DIESEL", ex: 1844990, ins: 88456, rto: 267615, tcs: 18450, onroad: 2219510 },
+        { name: "ADVENTURE X PLUS DIESEL DK", ex: 1894990, ins: 90535, rto: 274755, tcs: 18950, onroad: 2279230 },
         { name: "FEARLESS X DIESEL", ex: 2124990, ins: 100101, rto: 329273, tcs: 21250, onroad: 2575615 },
+        { name: "FEARLESS X DIESEL DK", ex: 2179990, ins: 102389, rto: 337688, tcs: 21800, onroad: 2641867 },
         { name: "FEARLESS X PLUS DIESEL", ex: 2324990, ins: 108419, rto: 359873, tcs: 23250, onroad: 2816533 },
+        { name: "FEARLESS X PLUS DIESEL DK", ex: 2379990, ins: 110707, rto: 368288, tcs: 23800, onroad: 2882785 },
+        { name: "FEARLESS X PLUS DIESEL STEALTH", ex: 2394990, ins: 111330, rto: 370583, tcs: 23950, onroad: 2900854 },
         { name: "FEARLESS UL DIESEL", ex: 2384990, ins: 110915, rto: 369053, tcs: 23850, onroad: 2888808 },
         { name: "FEARLESS UL RDK DIESEL", ex: 2439990, ins: 113202, rto: 377468, tcs: 24400, onroad: 2955060 },
       ],
       "Diesel AT": [
         { name: "PURE X DIESEL AT", ex: 1864990, ins: 89288, rto: 270471, tcs: 18650, onroad: 2243398 },
+        { name: "PURE X DIESEL DK AT", ex: 1909990, ins: 91159, rto: 276897, tcs: 19100, onroad: 2297146 },
         { name: "ADVENTURE X DIESEL AT", ex: 1964990, ins: 93447, rto: 284751, tcs: 19650, onroad: 2362837 },
+        { name: "ADVENTURE X PLUS DIESEL AT", ex: 1999990, ins: 94902, rto: 289749, tcs: 20000, onroad: 2404641 },
+        { name: "ADVENTURE X DIESEL DK AT", ex: 2019990, ins: 95734, rto: 313208, tcs: 20200, onroad: 2449133 },
+        { name: "ADVENTURE X PLUS DIESEL DK AT", ex: 2054990, ins: 97190, rto: 318563, tcs: 20550, onroad: 2491293 },
         { name: "FEARLESS X DIESEL AT", ex: 2279990, ins: 106548, rto: 352988, tcs: 22800, onroad: 2762326 },
+        { name: "FEARLESS X DIESEL DK AT", ex: 2339990, ins: 109043, rto: 362168, tcs: 23400, onroad: 2834601 },
+        { name: "FEARLESS X PLUS DIESEL AT", ex: 2469990, ins: 114450, rto: 382058, tcs: 24700, onroad: 2991198 },
+        { name: "FEARLESS X PLUS DIESEL DK AT", ex: 2519990, ins: 116529, rto: 389708, tcs: 25200, onroad: 3051428 },
+        { name: "FEARLESS X PLUS DIESEL STEALTH AT", ex: 2534990, ins: 117153, rto: 392003, tcs: 25350, onroad: 3069496 },
         { name: "FEARLESS UL DIESEL AT", ex: 2529990, ins: 116945, rto: 391238, tcs: 25300, onroad: 3063474 },
         { name: "FEARLESS UL RDK DIESEL AT", ex: 2584990, ins: 119233, rto: 399653, tcs: 25850, onroad: 3129726 },
       ],
@@ -492,36 +510,71 @@ export const CARS: Record<CarKey, CarDetails> = {
       "Petrol MT": [
         { name: "SMART SAFARI", ex: 1329000, ins: 74084, rto: 166820, tcs: 13290, onroad: 1583194 },
         { name: "PURE X SAFARI", ex: 1649190, ins: 84888, rto: 206011, tcs: 16492, onroad: 1956581 },
-        { name: "ADVENTURE X PLUS SAFARI", ex: 1775090, ins: 89136, rto: 221422, tcs: 17751, onroad: 2103399 },
+        { name: "PURE X DK SAFARI", ex: 1701190, ins: 86643, rto: 212376, tcs: 17012, onroad: 2017221 },
+        { name: "ADVENTURE X 1.5 PLUS SAFARI", ex: 1775090, ins: 89136, rto: 221422, tcs: 17751, onroad: 2103399 },
+        { name: "ADVENTURE X PLUS DK SAFARI", ex: 1827190, ins: 90894, rto: 227799, tcs: 18272, onroad: 2164155 },
         { name: "ACCOMPLISHED X SAFARI", ex: 2084290, ins: 99569, rto: 259268, tcs: 20843, onroad: 2463970 },
+        { name: "ACCOMPLISHED X DK SAFARI", ex: 2136290, ins: 101324, rto: 265632, tcs: 21363, onroad: 2524609 },
         { name: "ACCOMPLISHED X PLUS SAFARI", ex: 2273490, ins: 105953, rto: 282426, tcs: 22735, onroad: 2684604 },
+        { name: "ACCOMPLISHED X PLUS DK SAFARI", ex: 2306590, ins: 107070, rto: 286477, tcs: 23066, onroad: 2723203 },
+        { name: "ACCOMPLISHED X PLUS 6S SAFARI", ex: 2282990, ins: 106274, rto: 283588, tcs: 22830, onroad: 2695682 },
+        { name: "ACCOMPLISHED X PLUS DK 6S SAFARI", ex: 2316090, ins: 107391, rto: 287640, tcs: 23161, onroad: 2734282 },
         { name: "ACCOMPLISHED UL SAFARI", ex: 2333490, ins: 107978, rto: 289770, tcs: 23335, onroad: 2754573 },
+        { name: "ACCOMPLISHED UL 6S SAFARI", ex: 2342990, ins: 108298, rto: 290932, tcs: 23430, onroad: 2765650 },
         { name: "ACCOMPLISHED UL RDK SAFARI", ex: 2368490, ins: 109159, rto: 294054, tcs: 23685, onroad: 2795388 },
+        { name: "ACCOMPLISHED UL RDK 6S SAFARI", ex: 2377990, ins: 109479, rto: 295216, tcs: 23780, onroad: 2806465 },
       ],
       "Petrol AT": [
         { name: "PURE X AT SAFARI", ex: 1791090, ins: 89676, rto: 223380, tcs: 17911, onroad: 2122057 },
+        { name: "PURE X DK AT SAFARI", ex: 1852590, ins: 91751, rto: 230908, tcs: 18526, onroad: 2193775 },
         { name: "ADVENTURE X PLUS AT SAFARI", ex: 1935990, ins: 94565, rto: 241116, tcs: 19360, onroad: 2291031 },
+        { name: "ADVENTURE X PLUS DK AT SAFARI", ex: 1988090, ins: 96323, rto: 247493, tcs: 19881, onroad: 2351787 },
         { name: "ACCOMPLISHED X AT SAFARI", ex: 2249890, ins: 105157, rto: 279537, tcs: 22499, onroad: 2657083 },
+        { name: "ACCOMPLISHED X DK AT SAFARI", ex: 2301890, ins: 106912, rto: 285902, tcs: 23019, onroad: 2717723 },
         { name: "ACCOMPLISHED X PLUS AT SAFARI", ex: 2415390, ins: 110741, rto: 299794, tcs: 24154, onroad: 2850079 },
+        { name: "ACCOMPLISHED X PLUS DK AT SAFARI", ex: 2448490, ins: 111123, rto: 303846, tcs: 24485, onroad: 2888679 },
+        { name: "ACCOMPLISHED X PLUS AT 6S SAFARI", ex: 2424890, ins: 111062, rto: 300957, tcs: 24249, onroad: 2861158 },
+        { name: "ACCOMPLISHED X PLUS DK AT 6S SAFARI", ex: 2457990, ins: 112179, rto: 305008, tcs: 24580, onroad: 2899757 },
         { name: "ACCOMPLISHED UL AT SAFARI", ex: 2475390, ins: 112766, rto: 307138, tcs: 24754, onroad: 2920048 },
+        { name: "ACCOMPLISHED UL AT 6S SAFARI", ex: 2484890, ins: 113086, rto: 308301, tcs: 24849, onroad: 2931126 },
         { name: "ACCOMPLISHED UL RDK AT SAFARI", ex: 2510390, ins: 113947, rto: 311422, tcs: 25104, onroad: 2960863 },
+        { name: "ACCOMPLISHED UL RDK AT 6S SAFARI", ex: 2519890, ins: 114267, rto: 312585, tcs: 25199, onroad: 2971941 },
       ],
       "Diesel MT": [
         { name: "SMART DIESEL SAFARI", ex: 1474990, ins: 73067, rto: 214779, tcs: 14750, onroad: 1777586 },
         { name: "PURE X DIESEL SAFARI", ex: 1764990, ins: 85129, rto: 256191, tcs: 17650, onroad: 2123959 },
+        { name: "PURE X DIESEL DARK SAFARI", ex: 1819990, ins: 87416, rto: 264045, tcs: 18200, onroad: 2189651 },
         { name: "ADVENTURE X PLUS DIESEL SAFARI", ex: 1899990, ins: 90743, rto: 275469, tcs: 19000, onroad: 2285202 },
+        { name: "ADVENTURE X PLUS DIESEL DARK SAFARI", ex: 1954990, ins: 93031, rto: 283323, tcs: 19550, onroad: 2350893 },
         { name: "ACCOMPLISHED X DIESEL SAFARI", ex: 2199990, ins: 103220, rto: 340748, tcs: 22000, onroad: 2665959 },
+        { name: "ACCOMPLISHED X DIESEL DARK SAFARI", ex: 2254990, ins: 105508, rto: 349163, tcs: 22550, onroad: 2732211 },
         { name: "ACCOMPLISHED X PLUS DIESEL SAFARI", ex: 2389990, ins: 111123, rto: 369818, tcs: 23900, onroad: 2894831 },
+        { name: "ACCOMPLISHED X PLUS 6S DIESEL SAFARI", ex: 2399990, ins: 111538, rto: 371348, tcs: 24000, onroad: 2906877 },
+        { name: "ACCOMPLISHED X PLUS DIESEL DARK SAFARI", ex: 2424990, ins: 112578, rto: 375173, tcs: 24250, onroad: 2936992 },
+        { name: "ACCOMPLISHED X PLUS DK 6S DIESEL SAFARI", ex: 2434990, ins: 112994, rto: 376703, tcs: 24350, onroad: 2949037 },
+        { name: "ACCOMPLISHED X PLUS STEALTH DIESEL SAFARI", ex: 2459990, ins: 114034, rto: 380528, tcs: 24600, onroad: 2979152 },
         { name: "ACCOMPLISHED UL DIESEL SAFARI", ex: 2449990, ins: 113618, rto: 378998, tcs: 24500, onroad: 2967106 },
+        { name: "ACCOMPLISHED UL 6S DIESEL SAFARI", ex: 2459990, ins: 114034, rto: 380528, tcs: 24600, onroad: 2979152 },
         { name: "ACCOMPLISHED UL RDK DIESEL SAFARI", ex: 2484990, ins: 115074, rto: 384353, tcs: 24850, onroad: 3009267 },
+        { name: "ACCOMPLISHED UL RDK 6S DIESEL SAFARI", ex: 2494990, ins: 115490, rto: 385883, tcs: 24950, onroad: 3021313 },
       ],
       "Diesel AT": [
         { name: "PURE X DIESEL AT SAFARI", ex: 1909990, ins: 91159, rto: 276897, tcs: 19100, onroad: 2297146 },
+        { name: "PURE X DIESEL DARK AT SAFARI", ex: 1969990, ins: 93655, rto: 285465, tcs: 19700, onroad: 2368809 },
         { name: "ADVENTURE X PLUS DIESEL AT SAFARI", ex: 2064990, ins: 97606, rto: 320093, tcs: 20650, onroad: 2503339 },
+        { name: "ADVENTURE X PLUS DIESEL DARK AT SAFARI", ex: 2114990, ins: 99685, rto: 327743, tcs: 21150, onroad: 2563569 },
         { name: "ACCOMPLISHED X DIESEL AT SAFARI", ex: 2364990, ins: 110083, rto: 365993, tcs: 23650, onroad: 2864716 },
+        { name: "ACCOMPLISHED X DIESEL DARK AT SAFARI", ex: 2419990, ins: 112370, rto: 374408, tcs: 24200, onroad: 2930969 },
         { name: "ACCOMPLISHED X PLUS DIESEL AT SAFARI", ex: 2534990, ins: 117153, rto: 392003, tcs: 25350, onroad: 3069496 },
+        { name: "ACCOMPLISHED X PLUS 6S DIESEL AT SAFARI", ex: 2544990, ins: 117569, rto: 393533, tcs: 25450, onroad: 3081542 },
+        { name: "ACCOMPLISHED X PLUS DIESEL DARK AT SAFARI", ex: 2569990, ins: 118609, rto: 375173, tcs: 25700, onroad: 3111657 },
+        { name: "ACCOMPLISHED X PLUS DK 6S DIESEL AT SAFARI", ex: 2579990, ins: 119025, rto: 398888, tcs: 25800, onroad: 3123703 },
+        { name: "ACCOMPLISHED X PLUS STEALTH DIESEL AT SAFARI", ex: 2604990, ins: 120064, rto: 402713, tcs: 26050, onroad: 3153818 },
+        { name: "ACCOMPLISHED X PLUS STEALTH 6S DIESEL AT SAFARI", ex: 2614990, ins: 120480, rto: 404243, tcs: 26150, onroad: 3165864 },
         { name: "ACCOMPLISHED UL DIESEL AT SAFARI", ex: 2594990, ins: 119649, rto: 401183, tcs: 25950, onroad: 3141772 },
+        { name: "ACCOMPLISHED UL 6S DIESEL AT SAFARI", ex: 2604990, ins: 120064, rto: 402713, tcs: 26050, onroad: 3153818 },
         { name: "ACCOMPLISHED UL RDK DIESEL AT SAFARI", ex: 2629990, ins: 121104, rto: 406538, tcs: 26300, onroad: 3183933 },
+        { name: "ACCOMPLISHED UL RDK 6S DIESEL AT SAFARI", ex: 2639990, ins: 121520, rto: 408068, tcs: 26400, onroad: 3195978 },
       ],
     },
   },
@@ -531,28 +584,50 @@ export const CARS: Record<CarKey, CarDetails> = {
       "Petrol MT": [
         { name: "SMART 1.2 TC", ex: 969990, ins: 52064, rto: 122877, tcs: 0, onroad: 1144931 },
         { name: "PURE PLUS 1.2 TC", ex: 1099990, ins: 57471, rto: 138789, tcs: 11000, onroad: 1307250 },
+        { name: "PURE PLUS (S) 1.2 TC", ex: 1164990, ins: 60175, rto: 146745, tcs: 11650, onroad: 1383559 },
         { name: "CREATIVE 1.2 TC", ex: 1219990, ins: 62462, rto: 153477, tcs: 12200, onroad: 1448129 },
-        { name: "ACCOMPLISHED S 1.2 TC", ex: 1459990, ins: 72444, rto: 182853, tcs: 14600, onroad: 1729886 },
+        { name: "CREATIVE (S) 1.2 TC", ex: 1269990, ins: 64541, rto: 159597, tcs: 12700, onroad: 1506828 },
+        { name: "CREATIVE PLUS (S) 1.2 TC", ex: 1369990, ins: 68701, rto: 171837, tcs: 13700, onroad: 1624227 },
+        { name: "CREATIVE (S) 1.2 TC GDI", ex: 1384990, ins: 69324, rto: 173673, tcs: 13850, onroad: 1641837 },
+        { name: "ACCOMPLISHED (S) 1.2 TC", ex: 1459990, ins: 72444, rto: 182853, tcs: 14600, onroad: 1729886 },
+        { name: "CREATIVE PLUS (S) 1.2 TC GDI", ex: 1484990, ins: 73483, rto: 185913, tcs: 14850, onroad: 1759236 },
+        { name: "ACCOMPLISHED (S) 1.2P GDI DARK", ex: 1579990, ins: 77434, rto: 197541, tcs: 15800, onroad: 1870765 },
         { name: "ACCOMPLISHED PLUS ADAS 1.2 GDI", ex: 1724990, ins: 83465, rto: 215289, tcs: 17250, onroad: 2040994 },
+        { name: "ACCOMPLISHED PLUS (A) 1.2P GDI DARK", ex: 1744990, ins: 84297, rto: 217737, tcs: 17450, onroad: 2064474 },
       ],
       "Petrol DCA": [
         { name: "PURE PLUS DCA 1.2", ex: 1249990, ins: 63710, rto: 157149, tcs: 12500, onroad: 1483348 },
+        { name: "PURE PLUS (S) DCA 1.2", ex: 1314990, ins: 66413, rto: 165105, tcs: 13150, onroad: 1559658 },
         { name: "CREATIVE DCA 1.2", ex: 1369990, ins: 68701, rto: 171837, tcs: 13700, onroad: 1624227 },
-        { name: "ACCOMPLISHED S DCA 1.2", ex: 1614990, ins: 78890, rto: 201825, tcs: 16150, onroad: 1911855 },
+        { name: "CREATIVE (S) DCA 1.2", ex: 1419990, ins: 70780, rto: 177957, tcs: 14200, onroad: 1682927 },
+        { name: "CREATIVE PLUS (S) DCA 1.2", ex: 1519990, ins: 74939, rto: 190197, tcs: 15200, onroad: 1800326 },
+        { name: "ACCOMPLISHED (S) DCA 1.2", ex: 1614990, ins: 78890, rto: 201825, tcs: 16150, onroad: 1911855 },
+        { name: "CREATIVE PLUS (S) DCA 1.2 GDI", ex: 1634990, ins: 79722, rto: 204273, tcs: 16350, onroad: 1935335 },
+        { name: "ACCOMPLISHED (S) DCA 1.2 GDI", ex: 1664990, ins: 80970, rto: 207945, tcs: 16650, onroad: 1970554 },
+        { name: "ACCOMPLISHED (S) DCA GDI DARK", ex: 1744990, ins: 84297, rto: 217737, tcs: 17450, onroad: 2064474 },
         { name: "ACCOMPLISHED PLUS DCA GDI", ex: 1779990, ins: 85753, rto: 222021, tcs: 17800, onroad: 2105563 },
+        { name: "ACCOMPLISHED PLUS (A) DCA GDI DARK", ex: 1889990, ins: 90327, rto: 235485, tcs: 18900, onroad: 2234702 },
       ],
       "Diesel MT": [
         { name: "SMART 1.5 DIESEL", ex: 1119990, ins: 58303, rto: 141237, tcs: 11200, onroad: 1330730 },
         { name: "PURE PLUS 1.5 DIESEL", ex: 1249990, ins: 63710, rto: 157149, tcs: 12500, onroad: 1483348 },
+        { name: "PURE PLUS (S) 1.5 DIESEL", ex: 1314990, ins: 66413, rto: 165105, tcs: 13150, onroad: 1559658 },
         { name: "CREATIVE 1.5 DIESEL", ex: 1369990, ins: 68701, rto: 171837, tcs: 13700, onroad: 1624227 },
-        { name: "ACCOMPLISHED S 1.5 DIESEL", ex: 1599990, ins: 78266, rto: 199989, tcs: 16000, onroad: 1894245 },
+        { name: "CREATIVE (S) 1.5 DIESEL", ex: 1419990, ins: 70780, rto: 177957, tcs: 14200, onroad: 1682927 },
+        { name: "CREATIVE PLUS (S) 1.5 DIESEL", ex: 1519990, ins: 74939, rto: 190197, tcs: 15200, onroad: 1800326 },
+        { name: "ACCOMPLISHED (S) 1.5 DIESEL", ex: 1599990, ins: 78266, rto: 199989, tcs: 16000, onroad: 1894245 },
+        { name: "ACCOMPLISHED (S) 1.5D DARK", ex: 1614990, ins: 78890, rto: 201825, tcs: 16150, onroad: 1911855 },
         { name: "ACCOMPLISHED PLUS ADAS 1.5", ex: 1729990, ins: 83673, rto: 215901, tcs: 17300, onroad: 2046864 },
+        { name: "ACCOMPLISHED PLUS (A) 1.5D DARK", ex: 1759990, ins: 84921, rto: 219573, tcs: 17600, onroad: 2082083 },
       ],
       "Diesel DCA": [
         { name: "PURE PLUS DCA 1.5", ex: 1394990, ins: 69740, rto: 174897, tcs: 13950, onroad: 1653577 },
         { name: "CREATIVE S DCA 1.5", ex: 1564990, ins: 76811, rto: 195705, tcs: 15650, onroad: 1853155 },
+        { name: "CREATIVE PLUS (S) DCA 1.5 DIESEL", ex: 1634990, ins: 79722, rto: 204273, tcs: 16350, onroad: 1935335 },
         { name: "ACCOMPLISHED S DCA 1.5", ex: 1749990, ins: 84505, rto: 218349, tcs: 17500, onroad: 2070343 },
+        { name: "ACCOMPLISHED (S) 1.5D DCA DARK", ex: 1764990, ins: 85129, rto: 220185, tcs: 17650, onroad: 2087953 },
         { name: "ACCOMPLISHED PLUS DCA 1.5", ex: 1874990, ins: 89704, rto: 233649, tcs: 18750, onroad: 2217092 },
+        { name: "ACCOMPLISHED PLUS (A) 1.5D DCA DARK", ex: 1894990, ins: 90535, rto: 236097, tcs: 18950, onroad: 2240572 },
       ],
     },
   },
@@ -824,36 +899,156 @@ export function calculateBhRto(exShowroom: number, fuelType: string): number {
 // Official TATA Colors list for each luxury vehicle model
 export const VEHICLE_COLORS: Record<CarKey, Array<{ name: string; hex: string }>> = {
   HARRIER: [
-    { name: "Oberon Black (Dark Edition)", hex: "#111827" },
-    { name: "Coral Red (Metallic)", hex: "#dc2626" },
-    { name: "Pebble Grey (Signature)", hex: "#71717a" },
+    { name: "Oberon Black (Dark Edition)", hex: "#0f172a" },
+    { name: "Fearless Red (Signature)", hex: "#dc2626" },
+    { name: "Pristine White (High Gloss)", hex: "#fafafa" },
+    { name: "Daytona Grey (Metropolitan)", hex: "#4b5563" },
+    { name: "Seaweed Green (Adventure Special)", hex: "#14532d" },
     { name: "Sunlit Yellow (Dual-Tone)", hex: "#eab308" },
-    { name: "Ash Grey (Classic)", hex: "#3f3f46" },
+    { name: "Pure Grey (Steel Metallic)", hex: "#71717a" },
+    { name: "Carnelian Red (Red #DARK)", hex: "#7f1d1d" },
+    { name: "Nitro Crimson (Metallic)", hex: "#991b1b" },
   ],
   SAFARI: [
-    { name: "Cosmic Gold (Prestige)", hex: "#d97706" },
+    { name: "Cosmic Gold (Signature)", hex: "#d97706" },
     { name: "Galactic Sapphire (Deep Blue)", hex: "#1e3a8a" },
     { name: "Oyster White (Pearl)", hex: "#f4f4f5" },
-    { name: "Stardust Ash (Metallic)", hex: "#4b5563" },
-    { name: "Oberon Black (Dark Edition)", hex: "#111827" },
+    { name: "Daytona Grey (Metropolitan)", hex: "#4b5563" },
+    { name: "Supernova Copper (Adventure Special)", hex: "#78350f" },
+    { name: "Frost White (Gloss)", hex: "#fafafa" },
+    { name: "Pure Grey (Steel Metallic)", hex: "#71717a" },
+    { name: "Oberon Black (Dark Edition)", hex: "#0f172a" },
+    { name: "Carnelian Red (Red Dark)", hex: "#7f1d1d" },
   ],
   CURVV: [
-    { name: "Oberon Black (Dark Edition)", hex: "#111827" },
-    { name: "Gold Essence (Exclusive)", hex: "#b45309" },
+    { name: "Oberon Black (Dark Edition)", hex: "#0f172a" },
+    { name: "Gold Essence (Signature)", hex: "#b45309" },
     { name: "Flame Red (Sport)", hex: "#dc2626" },
-    { name: "Opera Blue (Ocean Dark)", hex: "#1d4ed8" },
-    { name: "Pristine White (Gloss)", hex: "#fafafa" },
-    { name: "Dayton Grey (Charcoal)", hex: "#52525b" },
+    { name: "Opera Blue", hex: "#1d4ed8" },
+    { name: "Pristine White", hex: "#fafafa" },
+    { name: "Daytona Grey", hex: "#4b5563" },
+    { name: "Pure Grey", hex: "#71717a" },
+    { name: "Nitro Crimson", hex: "#991b1b" },
   ],
   SIERRA: [
-    { name: "Oberon Black (Dark Edition)", hex: "#111827" },
-    { name: "Horizon Grey (Premium)", hex: "#6b7280" },
-    { name: "Forest Green (Adventurer)", hex: "#064e3b" },
-    { name: "Nebula Blue (Cosmic)", hex: "#0284c7" },
-    { name: "Snowy Peak White", hex: "#f8fafc" },
-    { name: "Stardust Silver (Satin)", hex: "#cbd5e1" },
+    { name: "Coorg Cloud (Satin Slate)", hex: "#5f705a" },
+    { name: "Munnar Mist (Satin Green)", hex: "#2e463a" },
+    { name: "Pristine White (High Gloss)", hex: "#fafafa" },
+    { name: "Pure Grey (Steel Metallic)", hex: "#71717a" },
+    { name: "Bengal Rouge (Deep Red Metallic)", hex: "#881337" },
+    { name: "Andaman Adventure (Sunset Orange)", hex: "#c2410c" },
+    { name: "Oberon Black (Dark Edition)", hex: "#0f172a" },
   ],
 };
+
+// Returns only the colors that apply to the given variant
+export function getEligibleColors(carKey: CarKey, variantName: string): Array<{ name: string; hex: string }> {
+  const vUpper = variantName.toUpperCase();
+  const allColors = VEHICLE_COLORS[carKey] || [];
+  
+  // Specific check for Dark/DK/RDK/STEALTH versions across models
+  const isDarkVariant = vUpper.includes("DK") || vUpper.includes("DARK") || vUpper.includes("RDK") || vUpper.includes("STEALTH");
+
+  if (carKey === "HARRIER") {
+    if (isDarkVariant) {
+      if (vUpper.includes("RDK") || vUpper.includes("ULTRA")) {
+        return allColors.filter(c => c.name.includes("Black") || c.name.includes("#DARK") || c.name.includes("Dark"));
+      }
+      return allColors.filter(c => c.name.includes("Black") || c.name.includes("Dark"));
+    }
+    
+    if (vUpper.includes("SMART")) {
+      return allColors.filter(c => ["Daytona Grey (Metropolitan)", "Fearless Red (Signature)", "Pristine White (High Gloss)", "Pure Grey (Steel Metallic)"].includes(c.name));
+    }
+    if (vUpper.includes("PURE")) {
+      return allColors.filter(c => ["Daytona Grey (Metropolitan)", "Fearless Red (Signature)", "Pristine White (High Gloss)", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    if (vUpper.includes("ADVENTURE")) {
+      return allColors.filter(c => ["Daytona Grey (Metropolitan)", "Fearless Red (Signature)", "Pristine White (High Gloss)", "Seaweed Green (Adventure Special)", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    if (vUpper.includes("ULTRA") || vUpper.includes("FEARLESS UL")) {
+      return allColors.filter(c => ["Carnelian Red (Red #DARK)", "Nitro Crimson (Metallic)", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    if (vUpper.includes("FEARLESS X PLUS")) {
+      return allColors.filter(c => ["Pure Grey (Steel Metallic)", "Daytona Grey (Metropolitan)", "Fearless Red (Signature)", "Pristine White (High Gloss)", "Seaweed Green (Adventure Special)", "Sunlit Yellow (Dual-Tone)", "Oberon Black (Dark Edition)", "Nitro Crimson (Metallic)"].includes(c.name));
+    }
+    if (vUpper.includes("FEARLESS")) {
+      return allColors.filter(c => ["Pure Grey (Steel Metallic)", "Daytona Grey (Metropolitan)", "Fearless Red (Signature)", "Pristine White (High Gloss)", "Seaweed Green (Adventure Special)", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    return allColors.filter(c => !c.name.includes("RDK") && !c.name.includes("Red"));
+  }
+
+  if (carKey === "SAFARI") {
+    if (isDarkVariant) {
+      if (vUpper.includes("RDK") || vUpper.includes("ULTRA") || vUpper.includes("ACCOMPLISHED UL")) {
+        return allColors.filter(c => c.name.includes("Black") || c.name.includes("Dark"));
+      }
+      return allColors.filter(c => c.name.includes("Black") || c.name.includes("Dark"));
+    }
+
+    if (vUpper.includes("SMART")) {
+      return allColors.filter(c => ["Frost White (Gloss)", "Daytona Grey (Metropolitan)", "Oyster White (Pearl)", "Pure Grey (Steel Metallic)"].includes(c.name));
+    }
+    if (vUpper.includes("PURE")) {
+      return allColors.filter(c => ["Frost White (Gloss)", "Daytona Grey (Metropolitan)", "Galactic Sapphire (Deep Blue)", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    if (vUpper.includes("ADVENTURE")) {
+      return allColors.filter(c => ["Pure Grey (Steel Metallic)", "Frost White (Gloss)", "Daytona Grey (Metropolitan)", "Galactic Sapphire (Deep Blue)", "Supernova Copper (Adventure Special)", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    if (vUpper.includes("ACCOMPLISHED")) {
+      return allColors; 
+    }
+    return allColors.filter(c => !c.name.includes("Gold") && !c.name.includes("Copper"));
+  }
+
+  if (carKey === "CURVV") {
+    if (isDarkVariant) {
+      return allColors.filter(c => c.name.includes("Black") || c.name.toUpperCase().includes("DARK"));
+    }
+    if (vUpper.includes("SMART")) {
+      return allColors.filter(c => ["Pristine White", "Daytona Grey", "Flame Red", "Opera Blue"].includes(c.name));
+    }
+    if (vUpper.includes("PURE")) {
+      return allColors.filter(c => ["Pristine White", "Daytona Grey", "Flame Red", "Opera Blue", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    if (vUpper.includes("CREATIVE S") || vUpper.includes("CREATIVE+")) {
+      return allColors.filter(c => ["Pristine White", "Daytona Grey", "Flame Red", "Pure Grey", "Opera Blue", "Nitro Crimson", "Oberon Black (Dark Edition)"].includes(c.name));
+    }
+    if (vUpper.includes("CREATIVE")) {
+      return allColors.filter(c => ["Pristine White", "Daytona Grey", "Flame Red", "Opera Blue", "Nitro Crimson"].includes(c.name));
+    }
+    if (vUpper.includes("ACCOMPLISHED")) {
+      return allColors;
+    }
+    return allColors.filter(c => !c.name.includes("Gold"));
+  }
+
+  if (carKey === "SIERRA") {
+    if (isDarkVariant) {
+      return allColors.filter(c => c.name.includes("Black") || c.name.toUpperCase().includes("DARK"));
+    }
+    if (vUpper.includes("SMART")) {
+      return allColors.filter(c => ["Pristine White (High Gloss)", "Pure Grey (Steel Metallic)", "Coorg Cloud (Satin Slate)", "Munnar Mist (Satin Green)"].includes(c.name));
+    }
+    if (vUpper.includes("PURE")) {
+      return allColors.filter(c => ["Munnar Mist (Satin Green)", "Pristine White (High Gloss)", "Pure Grey (Steel Metallic)", "Coorg Cloud (Satin Slate)"].includes(c.name));
+    }
+    if (vUpper.includes("PURE+")) {
+      return allColors.filter(c => ["Munnar Mist (Satin Green)", "Pristine White (High Gloss)", "Pure Grey (Steel Metallic)", "Coorg Cloud (Satin Slate)", "Bengal Rouge (Deep Red Metallic)"].includes(c.name));
+    }
+    if (vUpper.includes("ADVENTURE+")) {
+      return allColors.filter(c => ["Munnar Mist (Satin Green)", "Pristine White (High Gloss)", "Pure Grey (Steel Metallic)", "Coorg Cloud (Satin Slate)", "Bengal Rouge (Deep Red Metallic)", "Andaman Adventure (Sunset Orange)"].includes(c.name));
+    }
+    if (vUpper.includes("ADVENTURE")) {
+      return allColors.filter(c => ["Munnar Mist (Satin Green)", "Pristine White (High Gloss)", "Pure Grey (Steel Metallic)", "Coorg Cloud (Satin Slate)", "Bengal Rouge (Deep Red Metallic)"].includes(c.name));
+    }
+    if (vUpper.includes("ACCOMPLISHED")) {
+      return allColors;
+    }
+  }
+
+  return allColors;
+}
 
 // Official TATA Premium Genuine Accessories Checklist Addons with Pricing
 export const VEHICLE_ACCESSORIES = [
