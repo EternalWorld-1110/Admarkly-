@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Premium Dark UI / Admarkly Color Theme -->
+    <color name="brand_dark">#09090b</color> <!-- zinc-950 -->
+    <color name="brand_surface">#18181b</color> <!-- zinc-900 -->
+    <color name="brand_accent">#f59e0b</color> <!-- Amber-500 -->
+    <color name="brand_accent_dark">#d97706</color> <!-- Amber-600 -->
+    <color name="brand_card">#27272a</color> <!-- zinc-800 -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    
+    <color name="text_primary">#F4F4F5</color> <!-- zinc-100 -->
+    <color name="text_secondary">#A1A1AA</color> <!-- zinc-400 -->
+    <color name="text_muted">#71717A</color> <!-- zinc-500 -->
+    
+    <!-- Light mode counterparts if target fallback is active -->
+    <color name="light_bg">#FAFAFA</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_text_primary">#09090b</color>
+    <color name="light_text_secondary">#4b5563</color>
+</resources>

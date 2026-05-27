@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Admarkly</string>
+    <!-- Replace with actual Vercel/Production hosted applet URL. 
+         Currently hardcoded to our responsive web application. -->
+    <string name="website_url">https://ais-pre-7ndcmcsetm7ml3eqqddxgw-301469656139.asia-southeast1.run.app</string>
+    
+    <!-- Error text strings -->
+    <string name="error_offline_title">No Internet Connection</string>
+    <string name="error_offline_desc">Please verify your mobile network or Wi-Fi settings to continue configuring vehicles.</string>
+    <string name="btn_retry">Try Again</string>
+    <string name="notification_channel_id">admarkly_push_alerts</string>
+    <string name="notification_channel_name">Alerts and Campaigns</string>
+</resources>

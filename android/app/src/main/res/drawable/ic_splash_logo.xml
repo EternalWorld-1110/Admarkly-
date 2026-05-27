@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <group>
+        <!-- Outermost glow circle ring -->
+        <path
+            android:pathData="M60,10 C87.61,10,110,32.39,110,60 C110,87.61,87.61,110,60,110 C32.39,110,10,87.61,10,60 C10,32.39,32.39,10,60,10 Z"
+            android:strokeColor="#1d1d22"
+            android:strokeWidth="1.5" />
+        
+        <!-- Glowing Accent Arc -->
+        <path
+            android:pathData="M60,15 C84.85,15,105,35.15,105,60 C105,72.43,99.96,83.68,91.82,91.82"
+            android:strokeColor="#f59e0b"
+            android:strokeWidth="4"
+            android:strokeLineCap="round" />
+
+        <!-- Letter 'A' nested with a quotation mark shape for Admarkly Quotes -->
+        <path
+            android:pathData="M48,80 L60,40 L72,80"
+            android:strokeColor="#FFFFFF"
+            android:strokeWidth="6"
+            android:strokeLineJoin="bevel"
+            android:strokeLineCap="round" />
+        
+        <!-- Crossbar with glowing amber dot -->
+        <path
+            android:pathData="M52,68 L68,68"
+            android:strokeColor="#f59e0b"
+            android:strokeWidth="4"
+            android:strokeLineCap="round" />
+
+        <path
+            android:pathData="M78,45 Q78,35,85,35"
+            android:strokeColor="#f59e0b"
+            android:strokeWidth="3.5"
+            android:strokeLineCap="round" />
+        <path
+            android:pathData="M85,45 Q85,35,92,35"
+            android:strokeColor="#f59e0b"
+            android:strokeWidth="3.5"
+            android:strokeLineCap="round" />
+    </group>
+</vector>
