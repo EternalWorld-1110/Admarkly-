@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helpers
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Input Validation Blueprint
+    function isValidFinanceLead(data) {
+      return data.keys().hasAll(['customerName', 'mobile', 'vehicle', 'variant', 'emi', 'downPayment', 'status', 'followupDate', 'createdAt'])
+        && data.keys().size() == 9
+        && data.customerName is string && data.customerName.size() >= 2 && data.customerName.size() <= 100
+        && data.mobile is string && data.mobile.size() >= 10 && data.mobile.size() <= 15
+        && data.vehicle is string && data.vehicle.size() >= 2 && data.vehicle.size() <= 50
+        && data.variant is string && data.variant.size() >= 2 && data.variant.size() <= 100
+        && data.emi is int
+        && data.downPayment is int
+        && data.status is string && (data.status == 'Documents Pending' || data.status == 'Bank Processing' || data.status == 'Approved' || data.status == 'Rejected' || data.status == 'Disbursed')
+        && data.followupDate is string && data.followupDate.size() >= 5 && data.followupDate.size() <= 50
+        && data.createdAt is string && data.createdAt.size() >= 5 && data.createdAt.size() <= 50;
+    }
+
+    // Match block for financeLeads collection
+    match /financeLeads/{leadId} {
+      allow read: if true; // Sales CRM access can read leads to trace stats
+      allow create: if isValidId(leadId) && isValidFinanceLead(incoming());
+      allow update: if isValidId(leadId) && isValidFinanceLead(incoming()) && (
+        // Allow updates to any field since it is a CRM form, but guarantee standard type check and fields integrity.
+        incoming().diff(existing()).affectedKeys().hasAny(['status', 'followupDate', 'customerName', 'mobile', 'vehicle', 'variant', 'emi', 'downPayment'])
+      );
+      allow delete: if true;
+    }
+  }
+}

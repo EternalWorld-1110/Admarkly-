@@ -55,6 +55,19 @@ export function getVideo(carKey: CarKey, variantName: string): string {
     return "https://www.youtube.com/results?search_query=2025+tata+sierra+smart+plus+walkaround";
   }
 
+  // Altroz
+  if (carKey === "ALTROZ") {
+    return `https://www.youtube.com/results?search_query=2026+tata+altroz+${encodeURIComponent(variantName)}+walkaround`;
+  }
+  // Punch
+  if (carKey === "PUNCH") {
+    return `https://www.youtube.com/results?search_query=2026+tata+punch+${encodeURIComponent(variantName)}+walkaround`;
+  }
+  // Nexon
+  if (carKey === "NEXON") {
+    return `https://www.youtube.com/results?search_query=2026+tata+nexon+${encodeURIComponent(variantName)}+walkaround`;
+  }
+
   return "https://www.youtube.com/results?search_query=2025+tata+car+walkaround";
 }
 
@@ -434,6 +447,89 @@ export function getFeatures(carKey: CarKey, variantName: string): string[] {
     ];
   }
 
+  // Tata Altroz features
+  if (carKey === "ALTROZ") {
+    if (n.includes("CREATIVE") || n.includes("ACCOMPLISHED")) return [
+      "Voice-assisted electric sunroof with mood lighting",
+      "17.78 cm (7\") Touchscreen Infotainment by Harman™",
+      "7\" TFT Digital Instrument Cluster",
+      "iRA Connected Car Technology suite",
+      "Leather-Wrapped Flat-bottom Steering Wheel",
+      "Auto Headlamps & Rain Sensing Wipers",
+      "Projector Headlamps with LED DRLs",
+      "R16 Laser-cut Alloy Wheels",
+      "Automatic Climate Control with Rear AC Vents",
+      "Cooled Glove Box",
+      "Dual Front Airbags & ABS with EBD",
+      "Reverse Parking Camera with Guidelines",
+    ];
+    return [
+      "17.78 cm (7\") Touchscreen Infotainment by Harman™",
+      "Voice-assisted electric sunroof (Select Trims)",
+      "LED DRLs & Dual Chamber Projector Headlamps",
+      "R16 Steel Wheels or Styled Wheels",
+      "Reverse Parking Sensors",
+      "Dual Front Airbags & ABS with EBD & CSC",
+      "Tilt Adjustable Steering Menu",
+      "Central Locking with Keyless Entry",
+      "Follow-me-home Headlamps",
+    ];
+  }
+
+  // Tata Punch features
+  if (carKey === "PUNCH") {
+    if (n.includes("ACCOMPLISHED") || n.includes("ADVENTURE")) return [
+      "Voice-assisted Electric Sunroof",
+      "17.78 cm (7\") Touchscreen Infotainment by Harman™",
+      "7\" TFT Digital Cockpit Console",
+      "iRA Connected Vehicle Suite with iRA 2.0",
+      "R16 Diamond Cut Alloy Wheels",
+      "Auto Folding ORVMs with Electric Adjust",
+      "Reverse Parking Camera",
+      "Push Button Start/Stop",
+      "Dual Front Airbags & ABS with EBD",
+      "Follow-me-home Headlamps",
+      "Automatic Climate Control AC",
+    ];
+    return [
+      "Floating 8.89 cm Infotainment Display",
+      "Dual Front Airbags & ABS with EBD",
+      "ISOFIX Child Seat Anchors",
+      "Front Power Windows",
+      "Rear Parking Sensors",
+      "Traction Pro Mode (AMT only)",
+      "Tilt Adjustable Steering",
+      "Dynamic Swiping LED Indicators",
+    ];
+  }
+
+  // Tata Nexon features
+  if (carKey === "NEXON") {
+    if (n.includes("FEARLESS") || n.includes("CREATIVE")) return [
+      "26.03 cm (10.25\") Touchscreen Infotainment by Harman™",
+      "26.03 cm (10.25\") High Definition Digital Cluster",
+      "360° HD Surround View Camera with Blind View Monitor",
+      "Ventilated Front Seats (Driver & Co-Driver)",
+      "Voice-assisted Panoramic/Electric Sunroof",
+      "6 Airbags Standard (Driver, Pass, Side, Curtain)",
+      "Wireless Smart Phone Charger",
+      "Sequential LED DRLs & Taillamps with Animation",
+      "Electronic Stability Program (ESP) as Dragon Standard",
+      "Air Purifier with AQI Display",
+      "Multi-Drive Modes (Eco, City, Sport)",
+    ];
+    return [
+      "17.78 cm Touchscreen Infotainment by Harman™",
+      "6 Airbags Standard across variant stack",
+      "Electronic Stability Program (ESP)",
+      "LED Headlamps & Tail Lamps",
+      "ABS with EBD & Brake Assist",
+      "Reverse Parking Sensors",
+      "Front Power Windows",
+      "Multi-Drive Modes (Eco, City, Sport)",
+    ];
+  }
+
   return ["Please refer to the official vehicle brochure for active features."];
 }
 
@@ -661,6 +757,152 @@ export const CARS: Record<CarKey, CarDetails> = {
         { name: "ADVENTURE PLUS AT 1.5D", ex: 1849000, ins: 88623, rto: 268187, tcs: 18490, onroad: 2224300 },
         { name: "ACCOMPLISHED AT 1.5D", ex: 1999000, ins: 94861, rto: 289217, tcs: 19990, onroad: 2383069 },
         { name: "ACCOMPLISHED PLUS AT 1.5D", ex: 2129000, ins: 100268, rto: 329887, tcs: 21290, onroad: 2580445 },
+      ],
+    },
+  },
+  ALTROZ: {
+    label: "Tata Altroz", emoji: "🚗", color: "#eab308",
+    variants: {
+      "Petrol MT": [
+        { name: "1.2P SMART", ex: 629990, ins: 37924, rto: 74835, tcs: 12200, onroad: 742749 },
+        { name: "1.2P PURE", ex: 709990, ins: 41251, rto: 83811, tcs: 13267, onroad: 835052 },
+        { name: "1.2P PURE (S)", ex: 741990, ins: 42582, rto: 87401, tcs: 13693, onroad: 871973 },
+        { name: "1.2P CREATIVE", ex: 801990, ins: 45077, rto: 94133, tcs: 14493, onroad: 941201 },
+        { name: "1.2P CREATIVE (S)", ex: 836990, ins: 46533, rto: 98060, tcs: 14960, onroad: 981583 },
+        { name: "1.2P ACCOMPLISHED (S)", ex: 921990, ins: 50068, rto: 107597, tcs: 16093, onroad: 1079655 },
+      ],
+      "Petrol AT": [
+        { name: "1.2P PURE AMT", ex: 764990, ins: 43538, rto: 89982, tcs: 14000, onroad: 898510 },
+        { name: "1.2P PURE (S) AMT", ex: 796990, ins: 44869, rto: 93572, tcs: 14427, onroad: 935432 },
+        { name: "1.2P CREATIVE AMT", ex: 856990, ins: 47365, rto: 100304, tcs: 15227, onroad: 1004659 },
+        { name: "1.2P CREATIVE (S) AMT", ex: 891990, ins: 48820, rto: 104231, tcs: 15693, onroad: 1045042 },
+        { name: "1.2P CREATIVE (S) DCA", ex: 951990, ins: 51316, rto: 110963, tcs: 16493, onroad: 1114269 },
+        { name: "1.2P ACCOMPLISHED (S) DCA", ex: 1036990, ins: 54851, rto: 131078, tcs: 17627, onroad: 1233288 },
+        { name: "1.2P ACCOMPLISHED PLUS (S) DCA", ex: 1061990, ins: 55891, rto: 134138, tcs: 17960, onroad: 1262637 },
+      ],
+      "Diesel MT": [
+        { name: "1.5D PURE", ex: 814990, ins: 45618, rto: 112218, tcs: 14667, onroad: 972826 },
+        { name: "1.5D CREATIVE (S)", ex: 941990, ins: 50900, rto: 129058, tcs: 16360, onroad: 1121948 },
+        { name: "1.5D ACCOMPLISHED (S)", ex: 1026990, ins: 54435, rto: 149567, tcs: 17493, onroad: 1230992 },
+      ],
+      "CNG MT": [
+        { name: "SMART iCNG", ex: 729990, ins: 42083, rto: 63717, tcs: 13533, onroad: 835790 },
+        { name: "PURE iCNG", ex: 809990, ins: 45410, rto: 70245, tcs: 14600, onroad: 925645 },
+        { name: "PURE (S) iCNG", ex: 841990, ins: 46741, rto: 72856, tcs: 15027, onroad: 961587 },
+        { name: "CREATIVE iCNG", ex: 901990, ins: 49236, rto: 77752, tcs: 15827, onroad: 1028979 },
+        { name: "CREATIVE (S) iCNG", ex: 926990, ins: 50276, rto: 79792, tcs: 16160, onroad: 1057058 },
+        { name: "ACCOMPLISHED (S) iCNG", ex: 1021990, ins: 54227, rto: 87544, tcs: 17427, onroad: 1163762 },
+      ],
+    },
+  },
+  PUNCH: {
+    label: "Tata Punch", emoji: "🚙", color: "#f97316",
+    variants: {
+      "Petrol MT": [
+        { name: "2.0 SMART", ex: 564990, ins: 35220, rto: 67542, tcs: 11333, onroad: 667752 },
+        { name: "2.0 PURE", ex: 654990, ins: 38964, rto: 77640, tcs: 12533, onroad: 771593 },
+        { name: "2.0 PURE PLUS", ex: 704990, ins: 41043, rto: 83250, tcs: 13200, onroad: 829283 },
+        { name: "2.0 PURE PLUS (S)", ex: 739990, ins: 42499, rto: 87177, tcs: 13667, onroad: 869666 },
+        { name: "2.0 ADVENTURE", ex: 764990, ins: 43538, rto: 89982, tcs: 14000, onroad: 898510 },
+        { name: "2.0 ADVENTURE (S)", ex: 799990, ins: 44994, rto: 93909, tcs: 14467, onroad: 938893 },
+        { name: "2.0 ADVENTURE TC", ex: 834990, ins: 46450, rto: 97836, tcs: 14933, onroad: 979276 },
+        { name: "2.0 ACCOMPLISHED", ex: 834990, ins: 46450, rto: 97836, tcs: 14933, onroad: 979276 },
+        { name: "2.0 ACCOMPLISHED PLUS (S)", ex: 904990, ins: 49361, rto: 105690, tcs: 15867, onroad: 1060041 },
+      ],
+      "Petrol AT": [
+        { name: "2.0 PURE PLUS AMT", ex: 759990, ins: 43330, rto: 89421, tcs: 13933, onroad: 892741 },
+        { name: "2.0 PURE PLUS (S) AMT", ex: 794990, ins: 44786, rto: 93348, tcs: 14400, onroad: 933124 },
+        { name: "2.0 ADVENTURE AMT", ex: 819990, ins: 45826, rto: 96153, tcs: 14733, onroad: 961969 },
+        { name: "2.0 ACCOMPLISHED AMT", ex: 889990, ins: 48737, rto: 104007, tcs: 15667, onroad: 1042734 },
+        { name: "2.0 ACCOMPLISHED PLUS (S) AMT", ex: 959990, ins: 51649, rto: 111861, tcs: 16600, onroad: 1123499 },
+      ],
+      "CNG MT": [
+        { name: "2.0 SMART CNG", ex: 674990, ins: 39795, rto: 59229, tcs: 12800, onroad: 774014 },
+        { name: "2.0 PURE CNG", ex: 754990, ins: 43123, rto: 65757, tcs: 13867, onroad: 863870 },
+        { name: "2.0 PURE PLUS CNG", ex: 804990, ins: 45202, rto: 69837, tcs: 14533, onroad: 920029 },
+        { name: "2.0 PURE PLUS (S) CNG", ex: 839990, ins: 46658, rto: 72693, tcs: 15000, onroad: 959341 },
+        { name: "2.0 ADVENTURE CNG", ex: 864990, ins: 47697, rto: 74733, tcs: 15333, onroad: 987421 },
+        { name: "2.0 ADVENTURE (S) CNG", ex: 899990, ins: 49153, rto: 77589, tcs: 15800, onroad: 1026732 },
+        { name: "2.0 ACCOMPLISHED CNG", ex: 934990, ins: 50609, rto: 80445, tcs: 16267, onroad: 1066044 },
+        { name: "2.0 ACCOMPLISHED PLUS (S) TC", ex: 984990, ins: 52688, rto: 114666, tcs: 16933, onroad: 1152344 },
+      ],
+      "CNG AT": [
+        { name: "2.0 PURE PLUS CNG AMT", ex: 859990, ins: 47490, rto: 74325, tcs: 15267, onroad: 981805 },
+        { name: "2.0 ADVENTURE CNG AMT", ex: 919990, ins: 49985, rto: 79221, tcs: 16067, onroad: 1049196 },
+        { name: "2.0 ADVENTURE S CNG AMT", ex: 954990, ins: 51441, rto: 82077, tcs: 16533, onroad: 1088508 },
+        { name: "2.0 ACCOMPLISHED PLUS (S) CNG AMT", ex: 1059990, ins: 55808, rto: 101457, tcs: 17933, onroad: 1227814 },
+      ],
+    },
+  },
+  NEXON: {
+    label: "Tata Nexon", emoji: "🚙", color: "#8b5cf6",
+    variants: {
+      "Petrol MT": [
+        { name: "1.2P SMART", ex: 736990, ins: 42374, rto: 86840, tcs: 13627, onroad: 866204 },
+        { name: "1.2P SMART PLUS", ex: 806990, ins: 45285, rto: 94694, tcs: 14560, onroad: 946969 },
+        { name: "1.2P SMART PLUS (S)", ex: 836990, ins: 46533, rto: 98060, tcs: 14960, onroad: 981583 },
+        { name: "1.2P PURE PLUS", ex: 894990, ins: 48945, rto: 104568, tcs: 15733, onroad: 1048503 },
+        { name: "1.2P PURE PLUS (S)", ex: 922990, ins: 50110, rto: 107709, tcs: 16107, onroad: 1080809 },
+        { name: "1.2P CREATIVE", ex: 999990, ins: 53312, rto: 116349, tcs: 17133, onroad: 1169651 },
+        { name: "1.2P CREATIVE PLUS (S)", ex: 1034990, ins: 54768, rto: 130833, tcs: 19325, onroad: 1230941 },
+        { name: "1.2P CREATIVE PLUS (S) DARK", ex: 1076990, ins: 56515, rto: 135974, tcs: 19955, onroad: 1280249 },
+        { name: "1.2P CREATIVE PLUS (PS) DT", ex: 1131990, ins: 58802, rto: 142706, tcs: 20780, onroad: 1344818 },
+        { name: "1.2P CREATIVE PLUS (PS) DARK", ex: 1171990, ins: 60466, rto: 147602, tcs: 21380, onroad: 1391778 },
+        { name: "1.2P FEARLESS PLUS (PS) DT", ex: 1226990, ins: 62753, rto: 154334, tcs: 22205, onroad: 1456347 },
+        { name: "1.2P FEARLESS PLUS (PS) DARK", ex: 1246990, ins: 63584, rto: 156782, tcs: 22505, onroad: 1479827 },
+        { name: "1.2P FEARLESS PLUS PS RDK", ex: 1256990, ins: 64001, rto: 158006, tcs: 22655, onroad: 1491567 },
+      ],
+      "Petrol AT": [
+        { name: "1.2P SMART PLUS AMT", ex: 881990, ins: 48404, rto: 103109, tcs: 15560, onroad: 1033503 },
+        { name: "1.2P PURE PLUS AMT", ex: 959990, ins: 51649, rto: 111861, tcs: 16600, onroad: 1123500 },
+        { name: "1.2P PURE PLUS (S) AMT", ex: 987990, ins: 52813, rto: 115002, tcs: 16973, onroad: 1155805 },
+        { name: "1.2P CREATIVE AMT", ex: 1074990, ins: 56431, rto: 135729, tcs: 19925, onroad: 1277900 },
+        { name: "1.2P CREATIVE PLUS (S) AMT", ex: 1104990, ins: 57679, rto: 139401, tcs: 20375, onroad: 1313120 },
+        { name: "1.2P CREATIVE PLUS (S) AMT DARK", ex: 1146990, ins: 59426, rto: 144542, tcs: 21005, onroad: 1362428 },
+        { name: "1.2P CREATIVE DCA", ex: 1124990, ins: 58511, rto: 141849, tcs: 20675, onroad: 1336600 },
+        { name: "1.2P CREATIVE PLUS (PS) DCA DT", ex: 1246990, ins: 63584, rto: 156782, tcs: 22505, onroad: 1479827 },
+        { name: "1.2P CREATIVE PLUS (PS) DCA DARK", ex: 1281990, ins: 65041, rto: 161066, tcs: 23030, onroad: 1520917 },
+        { name: "FEARLESS PLUS 1.2P (A) PS DCA DT", ex: 1361990, ins: 68368, rto: 170858, tcs: 24230, onroad: 1614836 },
+        { name: "FEARLESS PLUS 1.2P (A) PS DCA DK", ex: 1381990, ins: 69200, rto: 173306, tcs: 24530, onroad: 1638316 },
+        { name: "FEARLESS PLUS 1.2P (A) PS DCA RDK", ex: 1391990, ins: 69616, rto: 174530, tcs: 24680, onroad: 1650056 },
+      ],
+      "Diesel MT": [
+        { name: "1.5D SMART PLUS", ex: 899990, ins: 49153, rto: 123489, tcs: 15800, onroad: 1072632 },
+        { name: "1.5D SMART PLUS (S)", ex: 936990, ins: 50692, rto: 128395, tcs: 16293, onroad: 1116077 },
+        { name: "1.5D PURE PLUS", ex: 999990, ins: 53312, rto: 136749, tcs: 17133, onroad: 1190051 },
+        { name: "1.5D PURE PLUS (S)", ex: 1027990, ins: 54477, rto: 150947, tcs: 17507, onroad: 1243694 },
+        { name: "1.5D CREATIVE", ex: 1124990, ins: 58511, rto: 164799, tcs: 18800, onroad: 1359550 },
+        { name: "1.5D CREATIVE PLUS (S)", ex: 1149990, ins: 59551, rto: 168369, tcs: 19133, onroad: 1389410 },
+        { name: "1.5D CREATIVE PLUS (S) DARK", ex: 1186990, ins: 61090, rto: 173652, tcs: 19627, onroad: 1433602 },
+        { name: "1.5D CREATIVE PLUS (PS) DT", ex: 1241990, ins: 63377, rto: 181506, tcs: 20360, onroad: 1499293 },
+        { name: "1.5D CREATIVE PLUS (PS) DARK", ex: 1281990, ins: 65041, rto: 187218, tcs: 20893, onroad: 1547069 },
+        { name: "1.5D FEARLESS PLUS (PS) DT", ex: 1336990, ins: 67328, rto: 195072, tcs: 21627, onroad: 1612760 },
+        { name: "1.5D FEARLESS PLUS (PS) DARK", ex: 1356990, ins: 68160, rto: 197928, tcs: 21893, onroad: 1636648 },
+        { name: "1.5D FEARLESS PLUS PS RDK", ex: 1366990, ins: 68576, rto: 199356, tcs: 22027, onroad: 1648592 },
+      ],
+      "Diesel AT": [
+        { name: "1.5D PURE PLUS AMT", ex: 1064990, ins: 56016, rto: 156231, tcs: 18000, onroad: 1287887 },
+        { name: "1.5D CREATIVE AMT", ex: 1184990, ins: 61006, rto: 173367, tcs: 19600, onroad: 1431213 },
+        { name: "1.5D CREATIVE PLUS (S) AMT", ex: 1214990, ins: 62254, rto: 177651, tcs: 20000, onroad: 1467045 },
+        { name: "1.5D CREATIVE PLUS (S) AMT DARK", ex: 1251990, ins: 63793, rto: 182934, tcs: 20493, onroad: 1511237 },
+        { name: "1.5D CREATIVE PLUS (PS) AMT DT", ex: 1306990, ins: 66080, rto: 190788, tcs: 21227, onroad: 1576928 },
+        { name: "1.5D CREATIVE PLUS (PS) AMT DARK", ex: 1346990, ins: 67744, rto: 196500, tcs: 21760, onroad: 1624704 },
+        { name: "1.5D FEARLESS PLUS (PS) AMT DT", ex: 1401990, ins: 70031, rto: 204354, tcs: 22493, onroad: 1690395 },
+        { name: "1.5D FEARLESS PLUS (PS) AMT DARK", ex: 1421990, ins: 70863, rto: 207210, tcs: 22760, onroad: 1714283 },
+      ],
+      "CNG MT": [
+        { name: "iCNG SMART", ex: 829990, ins: 46242, rto: 71877, tcs: 14867, onroad: 948109 },
+        { name: "iCNG SMART PLUS", ex: 921990, ins: 50068, rto: 79384, tcs: 16093, onroad: 1051442 },
+        { name: "iCNG SMART PLUS (S)", ex: 951990, ins: 51316, rto: 81832, tcs: 16493, onroad: 1085138 },
+        { name: "iCNG PURE PLUS", ex: 984990, ins: 52688, rto: 84525, tcs: 16933, onroad: 1122203 },
+        { name: "iCNG PURE PLUS (S)", ex: 999990, ins: 53312, rto: 85749, tcs: 17133, onroad: 1139051 },
+        { name: "iCNG CREATIVE", ex: 1104990, ins: 57679, rto: 105588, tcs: 18533, onroad: 1279307 },
+        { name: "iCNG CREATIVE PLUS (S)", ex: 1134990, ins: 58927, rto: 108342, tcs: 18933, onroad: 1313609 },
+        { name: "iCNG CREATIVE PLUS (S) DARK", ex: 1171990, ins: 60466, rto: 111739, tcs: 19427, onroad: 1355915 },
+        { name: "iCNG CREATIVE PLUS (PS) DT", ex: 1226990, ins: 62753, rto: 116788, tcs: 20160, onroad: 1418801 },
+        { name: "iCNG CREATIVE PLUS (PS) DARK", ex: 1266990, ins: 64417, rto: 120460, tcs: 20693, onroad: 1464537 },
+        { name: "iCNG FEARLESS PLUS (PS) DT", ex: 1321990, ins: 66704, rto: 125509, tcs: 21427, onroad: 1527423 },
+        { name: "iCNG FEARLESS PLUS (PS) DARK", ex: 1341990, ins: 67536, rto: 127345, tcs: 21693, onroad: 1550291 },
       ],
     },
   },
@@ -939,6 +1181,33 @@ export const VEHICLE_COLORS: Record<CarKey, Array<{ name: string; hex: string }>
     { name: "Andaman Adventure (Sunset Orange)", hex: "#c2410c" },
     { name: "Oberon Black (Dark Edition)", hex: "#0f172a" },
   ],
+  ALTROZ: [
+    { name: "Cosmo Black (Dark Edition)", hex: "#0f172a" },
+    { name: "High Street Gold (Signature)", hex: "#ca8a04" },
+    { name: "Downtown Red", hex: "#dc2626" },
+    { name: "Avenue White", hex: "#fafafa" },
+    { name: "Harbour Blue", hex: "#0284c7" },
+    { name: "Opera Blue", hex: "#1d4ed8" },
+    { name: "Arcade Grey", hex: "#4b5563" },
+  ],
+  PUNCH: [
+    { name: "Calypso Red", hex: "#b91c1c" },
+    { name: "Tornado Blue", hex: "#0284c7" },
+    { name: "Tropical Mist", hex: "#0d9488" },
+    { name: "Meteor Bronze", hex: "#854d0e" },
+    { name: "Atomic Orange", hex: "#ea580c" },
+    { name: "Orcus White", hex: "#fafafa" },
+    { name: "Daytona Grey", hex: "#4b5563" },
+  ],
+  NEXON: [
+    { name: "Atlas Black (Dark Edition)", hex: "#0f172a" },
+    { name: "Fearless Purple (Signature)", hex: "#581c87" },
+    { name: "Creative Ocean", hex: "#0891b2" },
+    { name: "Flame Red", hex: "#dc2626" },
+    { name: "Pure Grey", hex: "#71717a" },
+    { name: "Pristine White", hex: "#fafafa" },
+    { name: "Daytona Grey", hex: "#4b5563" },
+  ],
 };
 
 // Returns only the colors that apply to the given variant
@@ -1006,7 +1275,7 @@ export function getEligibleColors(carKey: CarKey, variantName: string): Array<{ 
       return allColors.filter(c => c.name.includes("Black") || c.name.toUpperCase().includes("DARK"));
     }
     if (vUpper.includes("SMART")) {
-      return allColors.filter(c => ["Pristine White", "Daytona Grey", "Flame Red", "Opera Blue"].includes(c.name));
+      return allColors.filter(c => ["Pristine White", "Daytona Grey"].includes(c.name));
     }
     if (vUpper.includes("PURE")) {
       return allColors.filter(c => ["Pristine White", "Daytona Grey", "Flame Red", "Opera Blue", "Oberon Black (Dark Edition)"].includes(c.name));
@@ -1028,7 +1297,7 @@ export function getEligibleColors(carKey: CarKey, variantName: string): Array<{ 
       return allColors.filter(c => c.name.includes("Black") || c.name.toUpperCase().includes("DARK"));
     }
     if (vUpper.includes("SMART")) {
-      return allColors.filter(c => ["Pristine White (High Gloss)", "Pure Grey (Steel Metallic)", "Coorg Cloud (Satin Slate)", "Munnar Mist (Satin Green)"].includes(c.name));
+      return allColors.filter(c => ["Pristine White (High Gloss)", "Pure Grey (Steel Metallic)"].includes(c.name));
     }
     if (vUpper.includes("PURE")) {
       return allColors.filter(c => ["Munnar Mist (Satin Green)", "Pristine White (High Gloss)", "Pure Grey (Steel Metallic)", "Coorg Cloud (Satin Slate)"].includes(c.name));
@@ -1045,6 +1314,13 @@ export function getEligibleColors(carKey: CarKey, variantName: string): Array<{ 
     if (vUpper.includes("ACCOMPLISHED")) {
       return allColors;
     }
+  }
+
+  if (carKey === "ALTROZ" || carKey === "PUNCH" || carKey === "NEXON") {
+    if (isDarkVariant) {
+      return allColors.filter(c => c.name.toLowerCase().includes("black") || c.name.toLowerCase().includes("dark"));
+    }
+    return allColors;
   }
 
   return allColors;

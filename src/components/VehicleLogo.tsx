@@ -26,7 +26,10 @@ export default function VehicleLogo({
     HARRIER: "#ea580c", // Orange
     SAFARI: "#0d9488",  // Teal
     CURVV: "#d97706",   // Amber
-    SIERRA: "#3b82f6"   // Blue
+    SIERRA: "#3b82f6",  // Blue
+    ALTROZ: "#eab308",  // Yellow
+    PUNCH: "#f97316",   // Orange/Bronze
+    NEXON: "#8b5cf6"    // Purple
   }[normalizedKey] || "#a1a1aa";
 
   const renderLogo = () => {
@@ -334,6 +337,199 @@ export default function VehicleLogo({
               <circle cx="76" cy="33" r="7.5" fill="#ffffff" stroke="#3b82f6" strokeWidth="1.5" />
               <circle cx="22" cy="33" r="3.5" stroke={isSelected ? "#3b82f6" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
               <circle cx="76" cy="33" r="3.5" stroke={isSelected ? "#3b82f6" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
+            </g>
+          </svg>
+        );
+
+      case "ALTROZ":
+        return (
+          <svg
+            viewBox="0 0 100 50"
+            className="w-full h-full drop-shadow-[0_0_15px_rgba(234,179,8,0.15)] transition-all duration-300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Background glow when selected */}
+            {isSelected && (
+              <circle cx="50" cy="25" r="20" fill="url(#altrozGlow)" opacity="0.4" />
+            )}
+
+            <defs>
+              <radialGradient id="altrozGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#eab308" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#eab308" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+
+            {/* Premium Hatchback Silhouette */}
+            <g
+              stroke={isSelected ? "#eab308" : "rgba(100,116,139,0.35)"}
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {/* Sleek hot-hatch side lines & rear integrated spoiler */}
+              <path
+                d="M 6 32 C 14 31, 21 28, 28 23 C 35 15, 54 13, 72 20 C 78 22, 85 24, 88 28 L 91 32"
+                stroke="#eab308"
+                strokeWidth={isSelected ? "3" : "2"}
+                className="transition-all duration-300"
+              />
+
+              {/* Passenger cabin glass house */}
+              <path
+                d="M 32 21 L 52 15 L 70 19 L 69 24 C 57 25, 41 24, 32 21 Z"
+                fill={isSelected ? "rgba(234, 179, 8, 0.12)" : "rgba(226,232,240,0.5)"}
+                stroke="#eab308"
+                strokeWidth="1"
+              />
+
+              {/* Sweeping black-accented bottom feature crease */}
+              <path d="M 6 32 L 91 32" stroke={isSelected ? "rgba(234, 179, 8, 0.4)" : "rgba(113,113,122,0.3)"} strokeWidth="1" />
+
+              {/* Rear sporty roof spoiler tail */}
+              <path
+                d="M 72 20 L 76 21 L 75 23 L 71 22 Z"
+                fill={isSelected ? "#eab308" : "rgba(113,113,122,0.5)"}
+                stroke="#eab308"
+                strokeWidth="1"
+              />
+
+              {/* R16 Laser-cut style Alloys */}
+              <circle cx="26" cy="32" r="7.2" fill="#ffffff" stroke="#eab308" strokeWidth="1.5" />
+              <circle cx="71" cy="32" r="7.2" fill="#ffffff" stroke="#eab308" strokeWidth="1.5" />
+
+              {/* Spoke detailing */}
+              <path d="M 26 24.8 L 26 39.2 M 18.8 32 L 33.2 32" stroke={isSelected ? "#eab308" : "rgba(113,113,122,0.6)"} strokeWidth="1" />
+              <path d="M 71 24.8 L 71 39.2 M 63.8 32 L 78.2 32" stroke={isSelected ? "#eab308" : "rgba(113,113,122,0.6)"} strokeWidth="1" />
+            </g>
+          </svg>
+        );
+
+      case "PUNCH":
+        return (
+          <svg
+            viewBox="0 0 100 50"
+            className="w-full h-full drop-shadow-[0_0_15px_rgba(249,115,22,0.15)] transition-all duration-300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Background glow when selected */}
+            {isSelected && (
+              <circle cx="50" cy="25" r="20" fill="url(#punchGlow)" opacity="0.4" />
+            )}
+
+            <defs>
+              <radialGradient id="punchGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#f97316" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#f97316" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+
+            {/* Upright Rugged Micro-SUV Silhouette */}
+            <g
+              stroke={isSelected ? "#f97316" : "rgba(100,116,139,0.35)"}
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {/* Bold square flat-bonnet and straight roof profile */}
+              <path
+                d="M 6 31 C 12 30, 15 28, 22 24 L 74 24 C 80 24, 83 25, 86 29 L 88 33"
+                stroke="#f97316"
+                strokeWidth={isSelected ? "3" : "2"}
+                className="transition-all duration-300"
+              />
+
+              {/* Roof Rails */}
+              <path
+                d="M 33 21 L 66 21"
+                stroke={isSelected ? "#f97316" : "rgba(113,113,122,0.5)"}
+                strokeWidth="1.5"
+              />
+
+              {/* Glass House & upright windshield */}
+              <path
+                d="M 28 24 L 46 24 L 46 29 L 28 29 Z"
+                fill={isSelected ? "rgba(249, 115, 22, 0.08)" : "rgba(226,232,240,0.5)"}
+                stroke="#f97316"
+                strokeWidth="1"
+              />
+              <path
+                d="M 52 24 L 72 24 C 74 24, 75 25, 75 27 L 74 29 L 52 29 Z"
+                fill={isSelected ? "rgba(249, 115, 22, 0.15)" : "rgba(226,232,240,0.7)"}
+                stroke="#f97316"
+                strokeWidth="1"
+              />
+
+              {/* Ground-clearance guard base line */}
+              <path d="M 5 33 L 90 33" stroke={isSelected ? "rgba(249, 115, 22, 0.4)" : "rgba(113,113,122,0.3)"} strokeWidth="1.2" />
+
+              {/* Strong bold cladding wheel arches */}
+              <circle cx="24" cy="33" r="7.5" fill="#ffffff" stroke="#f97316" strokeWidth="2.2" />
+              <circle cx="68" cy="33" r="7.5" fill="#ffffff" stroke="#f97316" strokeWidth="2.2" />
+              <circle cx="24" cy="33" r="3.5" stroke={isSelected ? "#f97316" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
+              <circle cx="68" cy="33" r="3.5" stroke={isSelected ? "#f97316" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
+            </g>
+          </svg>
+        );
+
+      case "NEXON":
+        return (
+          <svg
+            viewBox="0 0 100 50"
+            className="w-full h-full drop-shadow-[0_0_15px_rgba(139,92,246,0.15)] transition-all duration-300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Background glow when selected */}
+            {isSelected && (
+              <circle cx="50" cy="25" r="20" fill="url(#nexonGlow)" opacity="0.4" />
+            )}
+
+            <defs>
+              <radialGradient id="nexonGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+
+            {/* Futuristic Compact Crossover Silhouette */}
+            <g
+              stroke={isSelected ? "#8b5cf6" : "rgba(100,116,139,0.35)"}
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {/* Sweeping sporty sloping coupe crossover roofline */}
+              <path
+                d="M 5 32 C 10 29, 18 28, 24 22 C 32 13, 53 10, 70 17 C 78 20, 86 24, 91 28 L 94 30"
+                stroke="#8b5cf6"
+                strokeWidth={isSelected ? "3" : "2"}
+                className="transition-all duration-300"
+              />
+
+              {/* Dynamic glass windows with stylized wrap around C-pillar */}
+              <path
+                d="M 30 20 L 51 14 L 67 18 L 64 23 C 54 24, 38 24, 30 20 Z"
+                fill={isSelected ? "rgba(139, 92, 246, 0.12)" : "rgba(226,232,240,0.5)"}
+                stroke="#8b5cf6"
+                strokeWidth="1"
+              />
+
+              {/* Sleek lower body styling panels */}
+              <path d="M 4 33 L 94 33" stroke={isSelected ? "rgba(139, 92, 246, 0.4)" : "rgba(113,113,122,0.3)"} strokeWidth="1" />
+
+              {/* Dual-tone roof integrated contrast line */}
+              <path d="M 24 22 Q 53 15 70 17" stroke="rgba(139, 92, 246, 0.6)" strokeWidth="1.2" />
+
+              {/* R16 Diamond-cut Alloys inside defined chunky arches */}
+              <circle cx="24" cy="33" r="7.4" fill="#ffffff" stroke="#8b5cf6" strokeWidth="1.8" />
+              <circle cx="70" cy="33" r="7.4" fill="#ffffff" stroke="#8b5cf6" strokeWidth="1.8" />
+
+              {/* Hub Detail */}
+              <circle cx="24" cy="33" r="2.8" stroke={isSelected ? "#8b5cf6" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
+              <circle cx="70" cy="33" r="2.8" stroke={isSelected ? "#8b5cf6" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
             </g>
           </svg>
         );

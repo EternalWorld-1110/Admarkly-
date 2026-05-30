@@ -93,11 +93,12 @@ export default function VoiceAssistant({
       };
 
       recognition.onerror = (event: any) => {
-        console.error("Speech Recognition Error:", event.error);
+        console.warn("Speech Recognition Info (Not-Fatal Boundary):", event.error);
         if (event.error === "not-allowed") {
-          setVoiceStatus("Microphone access blocked. Enable permissions or try manual typing below.");
+          setVoiceStatus("Microphone access is blocked in this view. We have automatically opened the manual command box below so you can type or try the preset buttons!");
+          setShowManualCmd(true);
         } else {
-          setVoiceStatus(`Recognition issue: ${event.error}`);
+          setVoiceStatus(`Recognition issue: ${event.error}. Please try again or use the manual text engine below.`);
         }
         setListening(false);
       };
@@ -109,7 +110,7 @@ export default function VoiceAssistant({
       recognitionRef.current = recognition;
       recognition.start();
     } catch (err) {
-      console.error("Speech recognition startup error", err);
+      console.warn("Speech recognition skipped (Normal Iframe Restriction):", err);
       setVoiceStatus("Could not activate voice audio device.");
       setListening(false);
     }
@@ -315,32 +316,46 @@ export default function VoiceAssistant({
                 <div className="flex flex-wrap gap-1.5">
                   <button
                     type="button"
-                    onClick={() => runPreset("Quote and configure Harrier Fearless UL Petrol MT for Rahul Sharma")}
-                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-600 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
+                    onClick={() => runPreset("Quote and configure Nexon Fearless Plus with Purple color for Rahul Sharma")}
+                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-605 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
                   >
-                    🚀 Harrier Fearless for Rahul
+                    🚀 Nexon Fearless for Rahul
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => runPreset("Tata Punch Accomplished with Meteor Bronze for Shweta Patel")}
+                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-605 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
+                  >
+                    🚙 Punch Accomplished for Shweta
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => runPreset("Altroz Accomplished with Street Gold and discount of 25000")}
+                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-605 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
+                  >
+                    🚗 Altroz Street Gold (Discount)
                   </button>
                   <button
                     type="button"
                     onClick={() => runPreset("Safari Accomplished X Plus Diesel AT for Dr. Shrikant with discount of 75000")}
-                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-600 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
+                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-605 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
                   >
                     🌟 Safari Accomplished plus Discount
                   </button>
                   <button
                     type="button"
                     onClick={() => runPreset("Curvv Accomplished Plus Petrol MT for Mrs. Kadam")}
-                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-600 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
+                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-605 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer"
                   >
                     ⚡ Curvv for Mrs. Kadam
                   </button>
                   <button
                     type="button"
                     onClick={() => runPreset("Amit with Fearless UL RDK")}
-                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-600 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer bg-blue-50/50! border-blue-100!"
+                    className="bg-slate-50 hover:bg-slate-100 border border-slate-200/85 px-2.5 py-1.5 text-[11px] text-slate-605 rounded-lg text-left truncate max-w-full transition-colors cursor-pointer bg-blue-50/50! border-blue-100!"
                     title="Selects Amit as name, Harrier as car model, and sets Fearless UL RDK dark edition variant automatically!"
                   >
-                    ✨ Amit with Fearless UL RDK (Variant only)
+                    ✨ Amit with Fearless UL (Harrier)
                   </button>
                 </div>
               </div>

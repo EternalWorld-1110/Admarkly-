@@ -1,5 +1,5 @@
 {
-  "name": "Admarkly Quotes",
+  "name": "Qutares Quotes",
   "description": "Premium price quotation calculator and features guide builder for Tata Motors vehicles with voice-command auto-fill.",
   "requestFramePermissions": ["microphone"],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

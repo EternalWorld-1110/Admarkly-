@@ -515,11 +515,13 @@ _🔑 Book today & drive your dream Tata!_`;
       {/* Primary Action Row Panels */}
       <div className="space-y-3">
         {customerPhone.replace(/\D/g, "").length >= 10 ? (
-          <a
+          <motion.a
+            whileHover={{ scale: 1.015, boxShadow: "0 10px 20px -5px rgba(16, 185, 129, 0.3)" }}
+            whileTap={{ scale: 0.985 }}
             href={whatsappDirectUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full bg-[#10B981] hover:bg-[#059669] active:scale-98 text-white px-5 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all duration-200 shadow-sm cursor-pointer no-underline select-none"
+            className="w-full bg-[#10B981] hover:bg-[#059669] text-white px-5 py-4 rounded-2xl font-bold flex items-center justify-center gap-3 transition-all duration-200 shadow-sm cursor-pointer no-underline select-none"
           >
             <Send className="w-5 h-5 animate-pulse" />
             <div className="text-left leading-tight">
@@ -528,7 +530,7 @@ _🔑 Book today & drive your dream Tata!_`;
                 Configured with Phone: +91 {customerPhone.replace(/\D/g, "").slice(-10)}
               </span>
             </div>
-          </a>
+          </motion.a>
         ) : (
           <div className="bg-blue-50/50 rounded-2xl p-4.5 border border-blue-100 text-center text-xs text-slate-500 leading-normal font-medium">
             ℹ️ Add a 10-digit WhatsApp number on the configuration form to unlock direct message transmission.
@@ -536,7 +538,9 @@ _🔑 Book today & drive your dream Tata!_`;
         )}
 
         <div className="grid grid-cols-2 gap-3.5">
-          <a
+          <motion.a
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             href={whatsappGeneralUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -544,9 +548,11 @@ _🔑 Book today & drive your dream Tata!_`;
           >
             <Send className="w-3.5 h-3.5 text-slate-400" />
             Open Contact List
-          </a>
+          </motion.a>
 
-          <button
+          <motion.button
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={copyToClipboard}
             className={`py-3 rounded-2xl font-bold text-xs cursor-pointer flex items-center justify-center gap-2 transition-all shadow-xs ${
               copied
@@ -565,16 +571,18 @@ _🔑 Book today & drive your dream Tata!_`;
                 Copy Plain Text
               </>
             )}
-          </button>
+          </motion.button>
         </div>
 
-        <button
+        <motion.button
+          whileHover={{ scale: 1.01 }}
+          whileTap={{ scale: 0.99 }}
           onClick={onReset}
           className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl border border-slate-200 text-slate-500 hover:text-slate-800 hover:bg-slate-50/60 transition-all font-semibold text-xs cursor-pointer shadow-xs"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           Create New Valuation Quote
-        </button>
+        </motion.button>
       </div>
     </div>
   );

@@ -21,8 +21,10 @@ import {
   Calculator
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import FinanceModule from "./components/FinanceModule";
 
 export default function App() {
+  const [activeView, setActiveView] = useState<"quotation" | "finance">("quotation");
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [carKey, setCarKey] = useState<CarKey | "">("");
@@ -164,8 +166,39 @@ export default function App() {
         </div>
       </header>
 
-      {/* Main Container Layout */}
-      <main className="max-w-7xl mx-auto px-4 py-8">
+      {/* Sub-header View Tab Selector */}
+      <div className="bg-zinc-900 border-b border-zinc-900 bg-zinc-900/10 sticky top-[73px] sm:top-[73px] z-20 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-start gap-4">
+          <button
+            onClick={() => setActiveView("quotation")}
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+              activeView === "quotation"
+                ? "bg-amber-500 text-zinc-950 shadow-md shadow-amber-500/10"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
+          >
+            <Car className="w-3.5 h-3.5" />
+            Price Quotation Sheet
+          </button>
+          
+          <button
+            onClick={() => setActiveView("finance")}
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+              activeView === "finance"
+                ? "bg-blue-600 text-white shadow-md shadow-blue-500/10"
+                : "text-zinc-400 hover:text-zinc-200"
+            }`}
+          >
+            <Calculator className="w-3.5 h-3.5" />
+            Credit & Finance Portal
+            <span className="text-[8px] bg-blue-500/20 text-blue-400 px-1 py-0.5 rounded font-mono tracking-wider font-extrabold uppercase">NEW</span>
+          </button>
+        </div>
+      </div>
+
+      {activeView === "quotation" ? (
+        /* Main Container Layout */
+        <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* LEFT PANEL: CONFIGURATION INPUTS FORM */}
@@ -215,7 +248,7 @@ export default function App() {
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     placeholder="e.g. Rahul Sharma"
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 placeholder-zinc-700 font-medium focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/20 transition-all"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-base md:text-sm text-zinc-200 placeholder-zinc-700 font-medium focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500/20 transition-all"
                   />
                 </div>
 
@@ -231,7 +264,7 @@ export default function App() {
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value.replace(/[^\d+]/g, ""))}
                     placeholder="e.g. 9689811509"
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 placeholder-zinc-700 font-mono focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 transition-all"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-base md:text-sm text-zinc-200 placeholder-zinc-700 font-mono focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/10 transition-all"
                   />
                 </div>
               </div>
@@ -697,7 +730,7 @@ export default function App() {
                       id="discount-label-picker"
                       value={discountLabel}
                       onChange={(e) => setDiscountLabel(e.target.value)}
-                      className="bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-3 text-xs text-zinc-300 font-semibold focus:outline-none focus:border-amber-500"
+                      className="bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-3 text-base md:text-xs text-zinc-305 text-zinc-300 font-semibold focus:outline-none focus:border-amber-500"
                     >
                       {[
                         "Festival Offer",
@@ -722,7 +755,7 @@ export default function App() {
                         value={discount}
                         onChange={(e) => setDiscount(e.target.value)}
                         placeholder="Discount Deduction Amount"
-                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-8 pr-4 py-3 text-xs text-zinc-200 placeholder-zinc-700 font-mono focus:outline-none focus:border-green-500"
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-8 pr-4 py-3 text-base md:text-xs text-zinc-200 placeholder-zinc-700 font-mono focus:outline-none focus:border-green-500"
                       />
                     </div>
                   </div>
@@ -780,7 +813,7 @@ export default function App() {
                     onChange={(e) => setNote(e.target.value)}
                     placeholder="e.g. Free dynamic accessories worth ₹15,000 included plus guaranteed priority delivery."
                     rows={2}
-                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-xs text-zinc-300 placeholder-zinc-700 leading-relaxed font-normal focus:outline-none focus:border-amber-500 transition-all resize-none"
+                    className="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-3 text-base md:text-xs text-zinc-300 placeholder-zinc-700 leading-relaxed font-normal focus:outline-none focus:border-amber-500 transition-all resize-none"
                   />
                 </div>
               )}
@@ -914,9 +947,20 @@ export default function App() {
 
         </div>
       </main>
+      ) : (
+        <main className="max-w-7xl mx-auto px-4 py-8">
+          <FinanceModule
+            initialCarKey={carKey}
+            initialVariantName={variant?.name || ""}
+            initialOnRoadPrice={finalPrice}
+            initialCustomerName={customerName}
+            initialCustomerPhone={customerPhone}
+          />
+        </main>
+      )}
 
       <footer className="border-t border-zinc-900 bg-zinc-950 mt-16 py-8 text-center text-zinc-600 text-xs">
-        <p>© 2026 MAC Vehicles Private Limited. Built with high-fidelity showroom telemetry.</p>
+        <p>© 2026 Qutares. Built with high-fidelity showroom telemetry.</p>
         <p className="text-[10px] text-zinc-700 mt-2">Akshay D | +91 9689811509 | MH-29 Regional Coordinator Hubs</p>
       </footer>
     </div>

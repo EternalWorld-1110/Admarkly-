@@ -1,0 +1,55 @@
+{
+  "entities": {
+    "financeLead": {
+      "title": "Finance Lead",
+      "description": "Dealership finance assistance lead and loan tracker",
+      "type": "object",
+      "properties": {
+        "customerName": {
+          "type": "string",
+          "description": "Full name of the customer"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "Mobile number for contact and WhatsApp integration"
+        },
+        "vehicle": {
+          "type": "string",
+          "description": "Name of the vehicle model"
+        },
+        "variant": {
+          "type": "string",
+          "description": "Selected vehicle variant"
+        },
+        "emi": {
+          "type": "integer",
+          "description": "Estimated monthly EMI"
+        },
+        "downPayment": {
+          "type": "integer",
+          "description": "Down payment amount"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Documents Pending", "Bank Processing", "Approved", "Rejected", "Disbursed"],
+          "description": "Current processing status of the loan"
+        },
+        "followupDate": {
+          "type": "string",
+          "description": "Next follow-up date for tracking"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when lead was created"
+        }
+      },
+      "required": ["customerName", "mobile", "vehicle", "variant", "emi", "downPayment", "status", "followupDate", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/financeLeads/{leadId}": {
+      "schema": "financeLead",
+      "description": "Collection storing customer finance leads and approval flows"
+    }
+  }
+}
