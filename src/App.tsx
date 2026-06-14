@@ -4,6 +4,7 @@ import { CARS, fmt, fmtShort, getFeatures, DEALER, VEHICLE_COLORS, VEHICLE_ACCES
 import VoiceAssistant from "./components/VoiceAssistant";
 import QuotationPreview from "./components/QuotationPreview";
 import VehicleLogo from "./components/VehicleLogo";
+import GrowwEMICalculator from "./components/GrowwEMICalculator";
 import { 
   Car, 
   User, 
@@ -21,10 +22,8 @@ import {
   Calculator
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import FinanceModule from "./components/FinanceModule";
 
 export default function App() {
-  const [activeView, setActiveView] = useState<"quotation" | "finance">("quotation");
   const [customerName, setCustomerName] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [carKey, setCarKey] = useState<CarKey | "">("");
@@ -32,18 +31,16 @@ export default function App() {
   const [variant, setVariant] = useState<Variant | null>(null);
   const [discount, setDiscount] = useState("");
   const [discountLabel, setDiscountLabel] = useState("Festival Offer");
+  const [insuranceDiscount, setInsuranceDiscount] = useState("");
   const [note, setNote] = useState("");
   const [showQuoteView, setShowQuoteView] = useState(false);
   const [autoFillHighlights, setAutoFillHighlights] = useState<string[]>([]);
   const [showAutoFillToast, setShowAutoFillToast] = useState(false);
+  const [activeTab, setActiveTab] = useState<"quotation" | "emi">("quotation");
 
   // Custom Showroom configuration states (Feature 1, 3, 5)
   const [selectedColor, setSelectedColor] = useState<{ name: string; hex: string } | null>(null);
   const [selectedAccessories, setSelectedAccessories] = useState<Array<{ name: string; price: number }>>([]);
-  const [includeFinance, setIncludeFinance] = useState(false);
-  const [financeTenure, setFinanceTenure] = useState(5);
-  const [financeDownpayment, setFinanceDownpayment] = useState(0);
-  const [financeRate, setFinanceRate] = useState(8.75);
   const [rtoType, setRtoType] = useState<"standard" | "bh">("standard");
 
   const selectedCar = carKey ? CARS[carKey] : null;
@@ -75,7 +72,8 @@ export default function App() {
   }, [variant, effectiveRto]);
 
   const parsedDiscount = Number(discount) || 0;
-  const finalPrice = variant ? (effectiveOnRoad + accessoriesTotal - parsedDiscount) : 0;
+  const parsedInsuranceDiscount = Number(insuranceDiscount) || 0;
+  const finalPrice = variant ? (effectiveOnRoad + accessoriesTotal - parsedDiscount - parsedInsuranceDiscount) : 0;
   const accent = selectedColor ? selectedColor.hex : (selectedCar ? selectedCar.color : "#ea580c"); // Warm dynamic accent shade
 
 
@@ -98,16 +96,14 @@ export default function App() {
     setFuelType("");
     setVariant(null);
     setDiscount("");
+    setInsuranceDiscount("");
     setNote("");
     setShowQuoteView(false);
     setAutoFillHighlights([]);
     setSelectedColor(null);
     setSelectedAccessories([]);
-    setIncludeFinance(false);
-    setFinanceTenure(5);
-    setFinanceDownpayment(0);
-    setFinanceRate(8.75);
     setRtoType("standard");
+    setActiveTab("quotation");
   };
 
   // Helper to select preset discount amounts
@@ -166,43 +162,55 @@ export default function App() {
         </div>
       </header>
 
-      {/* Sub-header View Tab Selector */}
-      <div className="bg-zinc-900 border-b border-zinc-900 bg-zinc-900/10 sticky top-[73px] sm:top-[73px] z-20 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-start gap-4">
+      {/* Sticky Dual Navigation Tabs for Price Quotation Sheets vs. High-Precision Groww EMI Calculator */}
+      <div className="bg-zinc-950/90 border-b border-zinc-900 sticky top-[73px] z-20 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-start gap-3">
           <button
-            onClick={() => setActiveView("quotation")}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
-              activeView === "quotation"
+            onClick={() => setActiveTab("quotation")}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wide transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+              activeTab === "quotation"
                 ? "bg-amber-500 text-zinc-950 shadow-md shadow-amber-500/10"
-                : "text-zinc-400 hover:text-zinc-200"
+                : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/45"
             }`}
           >
-            <Car className="w-3.5 h-3.5" />
-            Price Quotation Sheet
+            <Car className="w-4 h-4 shrink-0" />
+            <span>Price Quotation Sheet</span>
           </button>
           
           <button
-            onClick={() => setActiveView("finance")}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
-              activeView === "finance"
-                ? "bg-blue-600 text-white shadow-md shadow-blue-500/10"
-                : "text-zinc-400 hover:text-zinc-200"
+            onClick={() => setActiveTab("emi")}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black tracking-wide transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+              activeTab === "emi"
+                ? "bg-emerald-500 text-zinc-950 shadow-md shadow-emerald-500/10"
+                : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/45"
             }`}
           >
-            <Calculator className="w-3.5 h-3.5" />
-            Credit & Finance Portal
-            <span className="text-[8px] bg-blue-500/20 text-blue-400 px-1 py-0.5 rounded font-mono tracking-wider font-extrabold uppercase">NEW</span>
+            <Calculator className="w-4 h-4 shrink-0" />
+            <span>Groww Loan EMI Calculator</span>
+            {variant && (
+              <span className="hidden sm:inline bg-emerald-700/20 text-emerald-400 text-[8px] font-mono font-extrabold uppercase py-0.5 px-1.5 rounded tracking-widest border border-emerald-500/20 ml-1 leading-none">
+                Live Pricing Linked
+              </span>
+            )}
           </button>
         </div>
       </div>
 
-      {activeView === "quotation" ? (
-        /* Main Container Layout */
-        <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* LEFT PANEL: CONFIGURATION INPUTS FORM */}
-          <div className="lg:col-span-7 space-y-6">
+      {/* Main Container Layout */}
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        <AnimatePresence mode="wait">
+          {activeTab === "quotation" ? (
+            <motion.div
+              key="quotation"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.2 }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
+            >
+              
+              {/* LEFT PANEL: CONFIGURATION INPUTS FORM */}
+              <div className="lg:col-span-7 space-y-6">
             
             {/* Elegant Hero Banner Overview */}
             <div className="bg-gradient-to-r from-zinc-900 to-zinc-950 border border-zinc-900 rounded-3xl p-6 relative overflow-hidden">
@@ -294,8 +302,6 @@ export default function App() {
                           const cColors = VEHICLE_COLORS[k];
                           setSelectedColor(cColors ? cColors[0] : null);
                           setSelectedAccessories([]);
-                          setIncludeFinance(false);
-                          setFinanceDownpayment(0);
                         }}
                         style={{
                           borderColor: borderCol,
@@ -365,48 +371,127 @@ export default function App() {
                   <label className="text-[11px] uppercase font-mono tracking-widest text-zinc-400 font-bold block">
                     Available Showroom Variants ({variants.length})
                   </label>
-                  <div className="bg-zinc-950 border border-zinc-900 rounded-2xl max-h-[300px] overflow-y-auto divide-y divide-zinc-900">
+                  <div className="bg-zinc-950 border border-zinc-900 rounded-2xl max-h-[480px] overflow-y-auto divide-y divide-zinc-900">
                     {variants.map((v) => {
                       const isSelected = variant?.name === v.name;
+                      const standardOnRoad = v.onroad;
+                      const rtoBh = calculateBhRto(v.ex, fuelType);
+                      const bhOnRoad = v.ex + v.ins + rtoBh + v.tcs;
+
                       return (
-                        <button
+                        <div
                           key={v.name}
-                          id={`btn-variant-${v.name.replace(/\s+/g, "-")}`}
-                          type="button"
-                          onClick={() => setVariant(v)}
-                          className={`w-full flex justify-between items-center p-4 text-left transition-all cursor-pointer ${
-                            isSelected ? "bg-amber-500/5 font-medium border-l-2 border-amber-500" : "hover:bg-zinc-900/60"
+                          className={`w-full transition-all border-l-2 ${
+                            isSelected ? "bg-zinc-900/40 border-amber-500" : "hover:bg-zinc-900/40 border-transparent"
                           }`}
                         >
-                          <div>
-                            <div
-                              className="text-xs font-bold leading-tight flex flex-wrap items-center gap-1.5"
-                              style={{ color: isSelected ? accent : "rgba(244,244,245,0.9)" }}
-                            >
-                              <span>{v.name.replace(/\bDK\b/g, "DARK").replace(/\bRDK\b/g, "RED DARK")}</span>
-                              {(v.name.includes("DK") || v.name.includes("RDK") || v.name.toUpperCase().includes("DARK")) && (
-                                <span className="bg-zinc-950 border border-amber-500/30 text-[9px] font-mono font-black text-amber-500 px-1.5 py-0.5 rounded leading-none select-none tracking-wider shrink-0">
-                                  DARK (BLACK COLOR)
-                                </span>
-                              )}
+                          <button
+                            id={`btn-variant-${v.name.replace(/\s+/g, "-")}`}
+                            type="button"
+                            onClick={() => setVariant(v)}
+                            className="w-full flex justify-between items-center p-4 text-left cursor-pointer transition-all duration-200"
+                          >
+                            <div>
+                              <div
+                                className="text-xs font-bold leading-tight flex flex-wrap items-center gap-1.5"
+                                style={{ color: isSelected ? accent : "rgba(244,244,245,0.9)" }}
+                              >
+                                <span>{v.name.replace(/\bDK\b/g, "DARK").replace(/\bRDK\b/g, "RED DARK")}</span>
+                                {(v.name.includes("DK") || v.name.includes("RDK") || v.name.toUpperCase().includes("DARK")) && (
+                                  <span className="bg-zinc-950 border border-amber-500/30 text-[9px] font-mono font-black text-amber-500 px-1.5 py-0.5 rounded leading-none select-none tracking-wider shrink-0">
+                                    DARK (BLACK COLOR)
+                                  </span>
+                                )}
+                              </div>
+                              <div className="text-[10px] text-zinc-500 font-mono mt-0.5">
+                                Ex-Showroom: {fmt(v.ex)}
+                              </div>
                             </div>
-                            <div className="text-[10px] text-zinc-500 font-mono mt-0.5">
-                              Ex-Showroom: {fmtShort(v.ex)}
+                            
+                            <div className="text-right">
+                              <span className="text-[8px] font-mono uppercase text-zinc-500 tracking-wider block">
+                                {rtoType === "bh" ? "BH Series On-Road" : "Standard On-Road"}
+                              </span>
+                              <span
+                                className="text-sm font-extrabold font-mono"
+                                style={{ color: isSelected ? accent : "rgba(161,161,170,0.9)" }}
+                              >
+                                {fmt(rtoType === "bh" ? bhOnRoad : standardOnRoad)}
+                              </span>
                             </div>
-                          </div>
-                          
-                          <div className="text-right">
-                            <span className="text-[8px] font-mono uppercase text-zinc-500 tracking-wider block">
-                              {rtoType === "bh" ? "BH Series On-Road" : "MH Registration On-Road"}
-                            </span>
-                            <span
-                              className="text-sm font-extrabold font-mono"
-                              style={{ color: isSelected ? accent : "rgba(161,161,170,0.9)" }}
-                            >
-                              {fmt(rtoType === "bh" ? v.ex + v.ins + calculateBhRto(v.ex, fuelType) + v.tcs : v.onroad)}
-                            </span>
-                          </div>
-                        </button>
+                          </button>
+
+                          {/* Beautiful Interactive Price Breakdown Card inside clicked individual variant */}
+                          {isSelected && (
+                            <div className="px-4 pb-4.5 pt-1 border-t border-zinc-900/60 overflow-hidden leading-normal">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 bg-zinc-950 p-4 rounded-xl border border-zinc-900">
+                                {/* Standard Column */}
+                                <div className="space-y-2">
+                                  <div className="flex items-center gap-1.5 mb-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-blue-400 font-mono">Standard Passing</span>
+                                  </div>
+                                  <div className="space-y-1 text-xs font-mono text-zinc-400">
+                                    <div className="flex justify-between">
+                                      <span>Ex-Showroom:</span>
+                                      <span className="text-zinc-200 font-semibold">{fmt(v.ex)}</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span>Insurance:</span>
+                                      <span className="text-zinc-200 font-semibold">{fmt(v.ins)}</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span>RTO Passing:</span>
+                                      <span className="text-zinc-200 font-semibold">{fmt(v.rto)}</span>
+                                    </div>
+                                    {v.tcs > 0 && (
+                                      <div className="flex justify-between">
+                                        <span>TCS (1%):</span>
+                                        <span className="text-zinc-200 font-semibold">{fmt(v.tcs)}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div className="pt-2 border-t border-zinc-900 flex justify-between text-xs font-bold text-zinc-200">
+                                    <span>Total On-Road:</span>
+                                    <span className="text-blue-400 font-extrabold font-mono">{fmt(standardOnRoad)}</span>
+                                  </div>
+                                </div>
+
+                                {/* BH Column */}
+                                <div className="space-y-2 pt-4 md:pt-0 md:pl-4 md:border-l border-zinc-900">
+                                  <div className="flex items-center gap-1.5 mb-1.5">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-500 font-mono">Bharat (BH) Passing</span>
+                                  </div>
+                                  <div className="space-y-1 text-xs font-mono text-zinc-400">
+                                    <div className="flex justify-between">
+                                      <span>Ex-Showroom:</span>
+                                      <span className="text-zinc-200 font-semibold">{fmt(v.ex)}</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span>Insurance:</span>
+                                      <span className="text-zinc-200 font-semibold">{fmt(v.ins)}</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span className="text-amber-500">BH RTO (2-Yr):</span>
+                                      <span className="text-amber-400 font-bold">{fmt(rtoBh)}</span>
+                                    </div>
+                                    {v.tcs > 0 && (
+                                      <div className="flex justify-between">
+                                        <span>TCS (1%):</span>
+                                        <span className="text-zinc-200 font-semibold">{fmt(v.tcs)}</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div className="pt-2 border-t border-zinc-900 flex justify-between text-xs font-bold text-zinc-200">
+                                    <span>Total BH On-Road:</span>
+                                    <span className="text-amber-500 font-extrabold font-mono">{fmt(bhOnRoad)}</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       );
                     })}
                   </div>
@@ -580,139 +665,6 @@ export default function App() {
                 </motion.div>
               )}
 
-              {/* FEATURE 1: INTERACTIVE FINANCE ESTIMATOR */}
-              {variant && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="space-y-3 pt-4 border-t border-zinc-900"
-                >
-                  <button
-                    type="button"
-                    onClick={() => {
-                      const enabled = !includeFinance;
-                      setIncludeFinance(enabled);
-                      if (enabled) {
-                        // Set default starting downpayment to around ~20% of net standard price
-                        const baseDownpayment = Math.round((variant.onroad + accessoriesTotal) * 0.20 / 10000) * 10000;
-                        setFinanceDownpayment(baseDownpayment);
-                      }
-                    }}
-                    className={`w-full flex items-center justify-between p-3.5 rounded-2xl border transition-all cursor-pointer ${
-                      includeFinance 
-                        ? "bg-zinc-900 text-white border-zinc-800" 
-                        : "bg-zinc-950/40 hover:bg-zinc-900/10 text-zinc-350 border-zinc-900"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5">
-                      <Calculator className="w-4 h-4 text-zinc-500" />
-                      <div className="text-left">
-                        <span className="block text-xs font-bold">Showroom Loan EMI Calculator</span>
-                        <span className="block text-[10px] text-zinc-500 font-normal mt-0.5">Configure down payment sliders & custom tenures</span>
-                      </div>
-                    </div>
-                    <div className={`w-9 h-5 rounded-full p-0.5 transition-colors duration-200 ${includeFinance ? "bg-amber-500" : "bg-zinc-800"}`}>
-                      <div className={`bg-black w-4 h-4 rounded-full shadow-md transform duration-200 ${includeFinance ? "translate-x-4" : ""}`} />
-                    </div>
-                  </button>
-
-                  {includeFinance && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="bg-zinc-950/40 border border-zinc-900 rounded-2xl p-4.5 space-y-4 overflow-hidden"
-                    >
-                      {/* Down Payment Slider */}
-                      <div className="space-y-1.5 animate-fadeIn">
-                        <div className="flex justify-between items-center text-xs">
-                          <span className="text-zinc-400">Margin Down Payment:</span>
-                          <span className="font-mono font-bold text-amber-500">{fmt(financeDownpayment)}</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="0"
-                          max={variant.onroad + accessoriesTotal}
-                          step="10000"
-                          value={financeDownpayment}
-                          onChange={(e) => setFinanceDownpayment(Number(e.target.value))}
-                          className="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer"
-                        />
-                        <div className="flex justify-between text-[9px] font-mono text-zinc-500">
-                          <span>Min: ₹0</span>
-                          <span>Max: {fmt(variant.onroad + accessoriesTotal)}</span>
-                        </div>
-                      </div>
-
-                      {/* Tenure Slider */}
-                      <div className="space-y-1.5">
-                        <div className="flex justify-between items-center text-xs">
-                          <span className="text-zinc-400">Loan Repayment Tenure:</span>
-                          <span className="font-bold text-zinc-300">
-                            {financeTenure} Years <span className="text-zinc-500 font-mono text-[10px]">({financeTenure * 12} mos)</span>
-                          </span>
-                        </div>
-                        <input
-                          type="range"
-                          min="1"
-                          max="7"
-                          step="1"
-                          value={financeTenure}
-                          onChange={(e) => setFinanceTenure(Number(e.target.value))}
-                          className="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer"
-                        />
-                        <div className="flex justify-between text-[9px] font-mono text-zinc-500">
-                          <span>1 Year</span>
-                          <span>3 Years</span>
-                          <span>5 Years</span>
-                          <span>7 Years</span>
-                        </div>
-                      </div>
-
-                      {/* Interest rate Slider */}
-                      <div className="space-y-1.5">
-                        <div className="flex justify-between items-center text-xs">
-                          <span className="text-zinc-400">Indicative Interest Rate:</span>
-                          <span className="font-mono font-bold text-zinc-300">{financeRate}% p.a.</span>
-                        </div>
-                        <input
-                          type="range"
-                          min="6"
-                          max="15"
-                          step="0.25"
-                          value={financeRate}
-                          onChange={(e) => setFinanceRate(Number(e.target.value))}
-                          className="w-full h-1.5 bg-zinc-800 rounded-lg cursor-pointer animate-none"
-                        />
-                        <div className="flex justify-between text-[9px] font-mono text-zinc-500">
-                          <span>6.0%</span>
-                          <span>9.0%</span>
-                          <span>12.0%</span>
-                          <span>15.0%</span>
-                        </div>
-                      </div>
-
-                      {/* Dynamic form-level calculation summary preview */}
-                      <div className="pt-2 border-t border-zinc-900 flex justify-between items-center">
-                        <div>
-                          <span className="text-[10px] font-mono text-zinc-500 uppercase block tracking-wider">Estimated Monthly EMI</span>
-                          <span className="text-[11px] text-zinc-400 font-medium">Approved Loan Amount: {fmt(Math.max(0, finalPrice - financeDownpayment))}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-lg font-mono font-black text-amber-400">
-                            {fmt(Math.round(
-                              Math.max(0, finalPrice - financeDownpayment) > 0 && ((financeRate / 100) / 12) > 0
-                                ? (Math.max(0, finalPrice - financeDownpayment) * ((financeRate / 100) / 12) * Math.pow(1 + ((financeRate / 100) / 12), financeTenure * 12)) / (Math.pow(1 + ((financeRate / 100) / 12), financeTenure * 12) - 1)
-                                : Math.max(0, finalPrice - financeDownpayment) / (financeTenure * 12)
-                            ))}
-                          </span>
-                          <span className="text-[10px] text-zinc-500 block font-mono">/ month</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </motion.div>
-              )}
-
               {/* ACTION DISCOUNTS AND BONUS MODULE */}
               {variant && (
                 <motion.div
@@ -730,7 +682,7 @@ export default function App() {
                       id="discount-label-picker"
                       value={discountLabel}
                       onChange={(e) => setDiscountLabel(e.target.value)}
-                      className="bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-3 text-base md:text-xs text-zinc-305 text-zinc-300 font-semibold focus:outline-none focus:border-amber-500"
+                      className="bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-3 text-base md:text-xs text-zinc-300 font-semibold focus:outline-none focus:border-amber-500"
                     >
                       {[
                         "Festival Offer",
@@ -746,7 +698,7 @@ export default function App() {
                     </select>
 
                     <div className="relative">
-                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-600 font-mono text-sm">
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-650 text-zinc-550 font-mono text-sm">
                         ₹
                       </span>
                       <input
@@ -754,7 +706,7 @@ export default function App() {
                         type="number"
                         value={discount}
                         onChange={(e) => setDiscount(e.target.value)}
-                        placeholder="Discount Deduction Amount"
+                        placeholder="Promo Discount Amount"
                         className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-8 pr-4 py-3 text-base md:text-xs text-zinc-200 placeholder-zinc-700 font-mono focus:outline-none focus:border-green-500"
                       />
                     </div>
@@ -786,14 +738,45 @@ export default function App() {
                     )}
                   </div>
 
-                  {parsedDiscount > 0 && (
+                  {/* Feature: Extra Insurance Discount Input */}
+                  <div className="space-y-2 pt-1 border-t border-zinc-900/60">
+                    <div className="flex justify-between items-center">
+                      <label className="text-[10px] font-mono tracking-widest font-bold text-zinc-400 uppercase flex items-center gap-1">
+                        <span>🛡️ Special Insurance Discount</span>
+                      </label>
+                      {insuranceDiscount && (
+                        <button
+                          type="button"
+                          onClick={() => setInsuranceDiscount("")}
+                          className="text-[9px] text-red-400 font-bold uppercase tracking-wider hover:underline cursor-pointer"
+                        >
+                          Clear
+                        </button>
+                      )}
+                    </div>
+                    <div className="relative">
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-600 font-mono text-sm">
+                        ₹
+                      </span>
+                      <input
+                        id="input-insurance-discount"
+                        type="number"
+                        value={insuranceDiscount}
+                        onChange={(e) => setInsuranceDiscount(e.target.value)}
+                        placeholder="e.g. Free Nil-Dep insurance offer or additional premium markdown"
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-8 pr-4 py-3 text-base md:text-xs text-zinc-200 placeholder-zinc-700 font-mono focus:outline-none focus:border-green-500"
+                      />
+                    </div>
+                  </div>
+
+                  {(parsedDiscount > 0 || parsedInsuranceDiscount > 0) && (
                     <div className="bg-zinc-950/80 border border-green-950/50 p-4.5 rounded-xl flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <TrendingDown className="w-4 h-4 text-emerald-500" />
                         <span className="text-xs text-zinc-400">Total Deductions Applied:</span>
                       </div>
                       <span className="font-mono font-black text-emerald-400 text-sm">
-                        -{fmt(parsedDiscount)}
+                        -{fmt(parsedDiscount + parsedInsuranceDiscount)}
                       </span>
                     </div>
                   )}
@@ -836,6 +819,32 @@ export default function App() {
 
             </div>
 
+            {/* Elegant promotion block pointing to the dedicated EMI tab */}
+            {variant && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-emerald-500/5 border border-emerald-500/10 p-5 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 mt-6"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
+                    <Calculator className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-zinc-200">Groww Car Loan EMI Calculator</h4>
+                    <p className="text-xs text-zinc-500 mt-0.5">Adjust downpayment and tenure range for {variant.name}</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab("emi")}
+                  className="bg-emerald-500 hover:bg-emerald-450 text-zinc-950 font-black text-xs px-4 py-2.5 rounded-xl transition-all shrink-0 cursor-pointer"
+                >
+                  Configure EMI Plan
+                </button>
+              </motion.div>
+            )}
+
           </div>
 
           {/* RIGHT PANEL: LIVE DYNAMIC PREVIEW VIEW CARD (DESKTOP AND MODAL PREVIEW) */}
@@ -858,14 +867,11 @@ export default function App() {
                     variant={variant}
                     discount={discount}
                     discountLabel={discountLabel}
+                    insuranceDiscount={insuranceDiscount}
                     note={note}
                     onReset={handleReset}
                     selectedColor={selectedColor || undefined}
                     selectedAccessories={selectedAccessories}
-                    includeFinance={includeFinance}
-                    financeTenure={financeTenure}
-                    financeDownpayment={financeDownpayment}
-                    financeRate={financeRate}
                     rtoType={rtoType}
                     effectiveRto={effectiveRto}
                   />
@@ -924,6 +930,7 @@ export default function App() {
                       variant={variant}
                       discount={discount}
                       discountLabel={discountLabel}
+                      insuranceDiscount={insuranceDiscount}
                       note={note}
                       onReset={() => {
                         handleReset();
@@ -931,10 +938,6 @@ export default function App() {
                       }}
                       selectedColor={selectedColor || undefined}
                       selectedAccessories={selectedAccessories}
-                      includeFinance={includeFinance}
-                      financeTenure={financeTenure}
-                      financeDownpayment={financeDownpayment}
-                      financeRate={financeRate}
                       rtoType={rtoType}
                       effectiveRto={effectiveRto}
                     />
@@ -945,19 +948,59 @@ export default function App() {
 
           </div>
 
-        </div>
-      </main>
+        </motion.div>
       ) : (
-        <main className="max-w-7xl mx-auto px-4 py-8">
-          <FinanceModule
-            initialCarKey={carKey}
-            initialVariantName={variant?.name || ""}
-            initialOnRoadPrice={finalPrice}
-            initialCustomerName={customerName}
-            initialCustomerPhone={customerPhone}
+        <motion.div
+          key="emi"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -15 }}
+          transition={{ duration: 0.2 }}
+          className="max-w-4xl mx-auto space-y-6"
+        >
+          {/* Elegant Hero Banner Overview */}
+          <div className="bg-gradient-to-r from-zinc-900 to-zinc-950 border border-zinc-900 rounded-3xl p-6 relative overflow-hidden">
+            <div className="absolute right-0 top-0 translate-x-12 -translate-y-12 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+            <div>
+              <span className="text-[10px] bg-emerald-500/10 text-emerald-400 font-mono font-black py-1 px-2.5 rounded-full border border-emerald-500/20 tracking-wider">
+                FINANCIAL ADVICE
+              </span>
+              <h2 className="font-display font-black text-2xl tracking-wide leading-snug mt-3">
+                Groww Car Loan <span className="text-emerald-400">EMI Planner</span>
+              </h2>
+              <p className="text-sm text-zinc-400 mt-2 leading-relaxed max-w-xl">
+                Configure your payment structure with high precision. The tool automatically syncs with the exact net payable amount from your customized quotation after applying all discounts.
+              </p>
+            </div>
+          </div>
+
+          <GrowwEMICalculator 
+            carPrice={finalPrice} 
+            carName={variant?.name || "TATA Variant"} 
+            fuelType={fuelType} 
           />
-        </main>
+
+          {variant && (
+            <div className="bg-zinc-900/40 border border-zinc-900 p-5 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <h5 className="text-[10px] font-mono font-bold text-zinc-500 uppercase tracking-widest">Active Linked Setup</h5>
+                <p className="text-xs font-semibold text-zinc-300 mt-1">
+                  Model: {selectedCar?.label} • Variant: {variant.name} • Net On-Road: <span className="text-emerald-400 font-mono font-bold">{fmt(finalPrice)}</span>
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActiveTab("quotation")}
+                className="bg-zinc-800 hover:bg-zinc-750 text-zinc-300 hover:text-white font-bold text-xs px-4.5 py-2.5 rounded-xl transition-all shrink-0 cursor-pointer"
+              >
+                Adjust Price in Quotation
+              </button>
+            </div>
+          )}
+        </motion.div>
       )}
+    </AnimatePresence>
+  </main>
 
       <footer className="border-t border-zinc-900 bg-zinc-950 mt-16 py-8 text-center text-zinc-600 text-xs">
         <p>© 2026 Qutares. Built with high-fidelity showroom telemetry.</p>

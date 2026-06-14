@@ -13,17 +13,13 @@ interface QuotationPreviewProps {
   variant: Variant;
   discount: string;
   discountLabel: string;
+  insuranceDiscount?: string;
   note: string;
   onReset: () => void;
   // Feature 3: Selected Car Color Shade
   selectedColor?: { name: string; hex: string };
   // Feature 5: Selected Accessories checklist from parent State
   selectedAccessories?: Array<{ name: string; price: number }>;
-  // Feature 1: Finance Estimates state variables
-  includeFinance?: boolean;
-  financeTenure?: number;
-  financeDownpayment?: number;
-  financeRate?: number;
   rtoType?: "standard" | "bh";
   effectiveRto?: number;
 }
@@ -36,14 +32,11 @@ export default function QuotationPreview({
   variant,
   discount,
   discountLabel,
+  insuranceDiscount = "",
   note,
   onReset,
   selectedColor,
   selectedAccessories = [],
-  includeFinance = false,
-  financeTenure = 5,
-  financeDownpayment = 0,
-  financeRate = 8.75,
   rtoType = "standard",
   effectiveRto,
 }: QuotationPreviewProps) {
@@ -52,6 +45,7 @@ export default function QuotationPreview({
 
   const car = CARS[carKey];
   const discNum = Number(discount) || 0;
+  const insDiscNum = Number(insuranceDiscount) || 0;
   
   // Calculate total accessories amount
   const accessoriesTotal = selectedAccessories.reduce((sum, item) => sum + item.price, 0);
@@ -61,7 +55,7 @@ export default function QuotationPreview({
   const computedOnRoad = variant.ex + variant.ins + rtoCharge + variant.tcs;
   
   // Compute true final price with selected genuine accessories and discount
-  const finalPrice = computedOnRoad + accessoriesTotal - discNum;
+  const finalPrice = computedOnRoad + accessoriesTotal - discNum - insDiscNum;
   
   // Custom Dynamic Color Accent of headers/borders matching the selected color shade!
   const accent = selectedColor?.hex || car.color;
@@ -73,14 +67,6 @@ export default function QuotationPreview({
     month: "short",
     year: "numeric",
   });
-
-  // Calculate Monthly EMI math (standard fixed rate formula)
-  const loanPrincipal = Math.max(0, finalPrice - financeDownpayment);
-  const monthlyRate = (financeRate / 100) / 12;
-  const totalMonths = financeTenure * 12;
-  const monthlyEMI = loanPrincipal > 0 && monthlyRate > 0
-    ? (loanPrincipal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1)
-    : loanPrincipal / Math.max(1, totalMonths);
 
   const generateRawWhatsAppText = () => {
     let message = `🚗 *TATA MOTORS — PRICE QUOTATION*
@@ -122,18 +108,11 @@ export default function QuotationPreview({
       message += `\n🎁 *${discountLabel}:  -${fmt(discNum)}*`;
     }
 
-    message += `\n💥 *Net Payable Amount:  ${fmt(finalPrice)}*`;
-
-    if (includeFinance && loanPrincipal > 0) {
-      message += `
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🏦 *FINANCE ESTIMATOR (Indicative)*
-• Proposed Tenure:         ${financeTenure} Years (${totalMonths} months)
-• margin Down Payment:    ${fmt(financeDownpayment)}
-• Principal Loan Amount:   ${fmt(loanPrincipal)}
-• Interest Rate:          ${financeRate}% p.a.
-• *Estimated Monthly EMI: ${fmt(Math.round(monthlyEMI))}/month*`;
+    if (insDiscNum > 0) {
+      message += `\n🛡️ *Insurance Discount:  -${fmt(insDiscNum)}*`;
     }
+
+    message += `\n💥 *Net Payable Amount:  ${fmt(finalPrice)}*`;
 
     message += `
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -369,6 +348,13 @@ _🔑 Book today & drive your dream Tata!_`;
                   </div>
                 )}
 
+                {insDiscNum > 0 && (
+                  <div className="flex justify-between py-2.5 text-xs text-emerald-600">
+                    <span className="font-semibold">🛡️ Insurance Discount</span>
+                    <span className="font-mono font-bold">-{fmt(insDiscNum)}</span>
+                  </div>
+                )}
+
                 <div className="flex justify-between pt-3.5 pb-1 border-t border-slate-200">
                   <span className="font-display font-bold text-sm text-emerald-700">
                     Final Net Payable Total
@@ -380,55 +366,7 @@ _🔑 Book today & drive your dream Tata!_`;
               </div>
             </div>
 
-            {/* Feature 1: EMI Finance Plan box summary inside Luxury Invoice if ticked */}
-            {includeFinance && loanPrincipal > 0 && (
-              <div 
-                className="bg-slate-50/50 rounded-2xl p-4.5 border transition-all duration-300"
-                style={{ borderColor: `${accent}40` }}
-              >
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="flex h-2 w-2 rounded-full relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-blue-600"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
-                  </span>
-                  <h4 className="text-[10px] font-mono font-extrabold uppercase tracking-widest text-slate-450">
-                    🏦 Indicative Finance Scheme Estimator
-                  </h4>
-                </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
-                  <div className="p-2.5 bg-white rounded-xl border border-slate-200">
-                    <span className="text-[9px] text-slate-400 block uppercase tracking-wider font-mono">Down Payment</span>
-                    <span className="text-xs font-mono font-bold text-slate-800 block mt-0.5">{fmt(financeDownpayment)}</span>
-                  </div>
-                  <div className="p-2.5 bg-white rounded-xl border border-slate-200">
-                    <span className="text-[9px] text-slate-400 block uppercase tracking-wider font-mono">Loan Amount</span>
-                    <span className="text-xs font-mono font-bold text-slate-800 block mt-0.5">{fmt(loanPrincipal)}</span>
-                  </div>
-                  <div className="p-2.5 bg-white rounded-xl border border-slate-200">
-                    <span className="text-[9px] text-slate-400 block uppercase tracking-wider font-mono">Tenure Range</span>
-                    <span className="text-xs font-bold text-slate-800 block mt-0.5">{financeTenure} Yrs</span>
-                  </div>
-                  <div className="p-2.5 bg-white rounded-xl border border-slate-200">
-                    <span className="text-[9px] text-slate-400 block uppercase tracking-wider font-mono">Annual Rate</span>
-                    <span className="text-xs font-mono font-bold text-slate-800 block mt-0.5">{financeRate}%</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-slate-200 shadow-xs">
-                  <div>
-                    <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest block">Estimated Monthly EMI</span>
-                    <span className="text-[10px] text-slate-500">Fixed monthly installment</span>
-                  </div>
-                  <div className="text-right">
-                    <span className="text-lg font-mono font-bold text-blue-600" style={{ color: accent }}>
-                      {fmt(Math.round(monthlyEMI))}
-                    </span>
-                    <span className="text-[10px] text-slate-400 block font-mono">per month</span>
-                  </div>
-                </div>
-              </div>
-            )}
 
             {/* Video walkthrough feature */}
             <div className="bg-red-50/45 rounded-2xl p-4 border border-red-100 flex gap-3.5 items-start">
