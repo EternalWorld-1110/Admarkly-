@@ -37,7 +37,7 @@ export function getVideo(carKey: CarKey, variantName: string): string {
 
   // Curvv
   if (carKey === "CURVV") {
-    if (n.includes("ACCOMPLISHED PLUS")) return "https://www.youtube.com/results?search_query=2025+tata+curvv+accomplished+plus+adas+walkaround";
+    if (n.includes("ACCOMPLISHED PLUS") || n.includes("ACCOMPLISHED+") || n.includes("ACCOMPLISHED +")) return "https://www.youtube.com/results?search_query=2025+tata+curvv+accomplished+plus+adas+walkaround";
     if (n.includes("ACCOMPLISHED"))      return "https://www.youtube.com/results?search_query=2025+tata+curvv+accomplished+s+walkaround";
     if (n.includes("CREATIVE"))          return "https://www.youtube.com/results?search_query=2025+tata+curvv+creative+walkaround";
     if (n.includes("PURE PLUS") || n.includes("PURE+")) return "https://www.youtube.com/results?search_query=2025+tata+curvv+pure+plus+walkaround";
@@ -278,7 +278,7 @@ export function getFeatures(carKey: CarKey, variantName: string): string[] {
 
   // Tata Curvv features
   if (carKey === "CURVV") {
-    if (n.includes("ACCOMPLISHED PLUS")) return [
+    if (n.includes("ACCOMPLISHED PLUS") || n.includes("ACCOMPLISHED+") || n.includes("ACCOMPLISHED +")) return [
       "31.24 cm (12.3\") Touchscreen Infotainment by Harman™",
       "ADAS Level 2 with Adaptive Cruise Control & more",
       "Voice-Assisted Panoramic Sunroof with Mood Lighting",
@@ -688,8 +688,8 @@ export const CARS: Record<CarKey, CarDetails> = {
         { name: "ACCOMPLISHED (S) 1.2 TC", ex: 1459990, ins: 72444, rto: 182853, tcs: 14600, onroad: 1729886 },
         { name: "CREATIVE PLUS (S) 1.2 TC GDI", ex: 1484990, ins: 73483, rto: 185913, tcs: 14850, onroad: 1759236 },
         { name: "ACCOMPLISHED (S) 1.2P GDI DARK", ex: 1579990, ins: 77434, rto: 197541, tcs: 15800, onroad: 1870765 },
-        { name: "ACCOMPLISHED PLUS ADAS 1.2 GDI", ex: 1724990, ins: 83465, rto: 215289, tcs: 17250, onroad: 2040994 },
-        { name: "ACCOMPLISHED PLUS (A) 1.2P GDI DARK", ex: 1744990, ins: 84297, rto: 217737, tcs: 17450, onroad: 2064474 },
+        { name: "ACCOMPLISHED+ A GDI 1.2", ex: 1724990, ins: 83465, rto: 215289, tcs: 17250, onroad: 2040994 },
+        { name: "ACCOMPLISHED+ A GDI 1.2 DARK", ex: 1744990, ins: 84297, rto: 217737, tcs: 17450, onroad: 2064474 },
       ],
       "Petrol DCA": [
         { name: "PURE PLUS DCA 1.2", ex: 1249990, ins: 63710, rto: 157149, tcs: 12500, onroad: 1483348 },
@@ -701,8 +701,8 @@ export const CARS: Record<CarKey, CarDetails> = {
         { name: "CREATIVE PLUS (S) DCA 1.2 GDI", ex: 1634990, ins: 79722, rto: 204273, tcs: 16350, onroad: 1935335 },
         { name: "ACCOMPLISHED (S) DCA 1.2 GDI", ex: 1664990, ins: 80970, rto: 207945, tcs: 16650, onroad: 1970554 },
         { name: "ACCOMPLISHED (S) DCA GDI DARK", ex: 1744990, ins: 84297, rto: 217737, tcs: 17450, onroad: 2064474 },
-        { name: "ACCOMPLISHED PLUS DCA GDI", ex: 1779990, ins: 85753, rto: 222021, tcs: 17800, onroad: 2105563 },
-        { name: "ACCOMPLISHED PLUS (A) DCA GDI DARK", ex: 1889990, ins: 90327, rto: 235485, tcs: 18900, onroad: 2234702 },
+        { name: "ACCOMPLISHED+ A DCA GDI 1.2", ex: 1779990, ins: 85753, rto: 222021, tcs: 17800, onroad: 2105563 },
+        { name: "ACCOMPLISHED+ A DCA GDI 1.2 DARK", ex: 1889990, ins: 90327, rto: 235485, tcs: 18900, onroad: 2234702 },
       ],
       "Diesel MT": [
         { name: "SMART 1.5 DIESEL", ex: 1119990, ins: 58303, rto: 141237, tcs: 11200, onroad: 1330730 },
@@ -713,17 +713,17 @@ export const CARS: Record<CarKey, CarDetails> = {
         { name: "CREATIVE PLUS (S) 1.5 DIESEL", ex: 1519990, ins: 74939, rto: 190197, tcs: 15200, onroad: 1800326 },
         { name: "ACCOMPLISHED (S) 1.5 DIESEL", ex: 1599990, ins: 78266, rto: 199989, tcs: 16000, onroad: 1894245 },
         { name: "ACCOMPLISHED (S) 1.5D DARK", ex: 1614990, ins: 78890, rto: 201825, tcs: 16150, onroad: 1911855 },
-        { name: "ACCOMPLISHED PLUS ADAS 1.5", ex: 1729990, ins: 83673, rto: 215901, tcs: 17300, onroad: 2046864 },
-        { name: "ACCOMPLISHED PLUS (A) 1.5D DARK", ex: 1759990, ins: 84921, rto: 219573, tcs: 17600, onroad: 2082083 },
+        { name: "ACCOMPLISHED+ A 1.5 DIESEL", ex: 1729990, ins: 83673, rto: 215901, tcs: 17300, onroad: 2046864 },
+        { name: "ACCOMPLISHED+ A 1.5D DIESEL DARK", ex: 1759990, ins: 84921, rto: 219573, tcs: 17600, onroad: 2082083 },
       ],
       "Diesel DCA": [
         { name: "PURE PLUS DCA 1.5", ex: 1394990, ins: 69740, rto: 174897, tcs: 13950, onroad: 1653577 },
-        { name: "CREATIVE S DCA 1.5", ex: 1564990, ins: 76811, rto: 195705, tcs: 15650, onroad: 1853155 },
+        { name: "CREATIVE (S) DCA 1.5", ex: 1564990, ins: 76811, rto: 195705, tcs: 15650, onroad: 1853155 },
         { name: "CREATIVE PLUS (S) DCA 1.5 DIESEL", ex: 1634990, ins: 79722, rto: 204273, tcs: 16350, onroad: 1935335 },
-        { name: "ACCOMPLISHED S DCA 1.5", ex: 1749990, ins: 84505, rto: 218349, tcs: 17500, onroad: 2070343 },
+        { name: "ACCOMPLISHED (S) DCA 1.5", ex: 1749990, ins: 84505, rto: 218349, tcs: 17500, onroad: 2070343 },
         { name: "ACCOMPLISHED (S) 1.5D DCA DARK", ex: 1764990, ins: 85129, rto: 220185, tcs: 17650, onroad: 2087953 },
-        { name: "ACCOMPLISHED PLUS DCA 1.5", ex: 1874990, ins: 89704, rto: 233649, tcs: 18750, onroad: 2217092 },
-        { name: "ACCOMPLISHED PLUS (A) 1.5D DCA DARK", ex: 1894990, ins: 90535, rto: 236097, tcs: 18950, onroad: 2240572 },
+        { name: "ACCOMPLISHED+ A DCA 1.5 DIESEL", ex: 1874990, ins: 89704, rto: 233649, tcs: 18750, onroad: 2217092 },
+        { name: "ACCOMPLISHED+ A DCA 1.5D DIESEL DARK", ex: 1894990, ins: 90535, rto: 236097, tcs: 18950, onroad: 2240572 },
       ],
     },
   },
@@ -1333,7 +1333,34 @@ export const VEHICLE_ACCESSORIES = [
   { id: "mudflaps", name: "Front & Rear Heavy-Duty Mud Flaps", price: 1200, desc: "TATA genuine splash-guard impact protection" },
   { id: "moulding", name: "Satin Chrome Side Protection Mouldings", price: 5500, desc: "Protects siding with premium gloss highlights" },
   { id: "cover", name: "Weather-Resistant Custom Body Cover", price: 2800, desc: "Double-stitched premium safe dust & rain shield" },
-  { id: "ceramic", name: "Showroom 9H Ceramic Polish Treatment", price: 12000, desc: "Long-lasting high-gloss protective showroom coat" },
+  { id: "ceramic", name: "Showroom 9H Ceramic Polish Treatment", price: 12000, desc: "Showroom-quality protective paint treatment" },
   { id: "warranty", name: "Extended Official TATA 2-Year Warranty", price: 16500, desc: "Covers engine, electrical, and transmission safety mechanics" },
 ];
+
+// DYNAMIC GLOBAL SANITIZER: Enforces and normalizes Indian tax mechanics on startup.
+// 1. TCS (1% of Ex-Showroom) is EXCLUSIVELY applicable on vehicles exceeding ₹10,00,000 (10 Lakhs) Ex-Showroom price.
+// 2. For vehicles with Ex-Showroom price ≤ ₹10,00,000, TCS is strictly ₹0.
+// 3. Re-normalizes the pre-calculated standard `onroad` value for any variant to ensure exact mathematical agreement.
+for (const carKey of Object.keys(CARS) as CarKey[]) {
+  const car = CARS[carKey];
+  for (const fuelType of Object.keys(car.variants)) {
+    car.variants[fuelType] = car.variants[fuelType].map((variant) => {
+      if (variant.ex <= 1000000) {
+        return {
+          ...variant,
+          tcs: 0,
+          onroad: variant.ex + variant.ins + variant.rto, // exactly ex + ins + rto (no TCS)
+        };
+      } else {
+        // Exceeds 10 Lakhs: TCS is strictly required (1% rate)
+        const calculatedTcs = variant.tcs > 0 ? variant.tcs : Math.round(variant.ex * 0.01);
+        return {
+          ...variant,
+          tcs: calculatedTcs,
+          onroad: variant.ex + variant.ins + variant.rto + calculatedTcs,
+        };
+      }
+    });
+  }
+}
 
