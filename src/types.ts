@@ -1,4 +1,4 @@
-export type CarKey = "HARRIER" | "SAFARI" | "CURVV" | "SIERRA" | "ALTROZ" | "PUNCH" | "NEXON";
+export type CarKey = "HARRIER" | "SAFARI" | "CURVV" | "SIERRA" | "ALTROZ" | "PUNCH" | "NEXON" | "TIAGO";
 
 export interface Variant {
   name: string;

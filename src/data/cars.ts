@@ -67,6 +67,10 @@ export function getVideo(carKey: CarKey, variantName: string): string {
   if (carKey === "NEXON") {
     return `https://www.youtube.com/results?search_query=2026+tata+nexon+${encodeURIComponent(variantName)}+walkaround`;
   }
+  // Tiago
+  if (carKey === "TIAGO") {
+    return `https://www.youtube.com/results?search_query=2026+tata+tiago+ev+${encodeURIComponent(variantName)}+walkaround`;
+  }
 
   return "https://www.youtube.com/results?search_query=2025+tata+car+walkaround";
 }
@@ -530,6 +534,50 @@ export function getFeatures(carKey: CarKey, variantName: string): string[] {
     ];
   }
 
+  // Tata Tiago EV features
+  if (carKey === "TIAGO") {
+    if (n.includes("CREATIVE")) return [
+      "Ultra View 26.03 cm (10\") HD Touchscreen Infotainment",
+      "360° SVS HD Camera with Multiple 2D/3D Views",
+      "Blind View Monitor",
+      "R14 Hyperstyle Wheels",
+      "LED DRLs & Lux Beam LED Headlamps",
+      "Electronic Stability Program (ESP) with Traction Control",
+      "Hill Hold Control & Cruise Control",
+      "Auto Defogger (Front & Rear) & Rain Sensing Wipers",
+      "Automatic Headlamps",
+      "Passive Entry Passive Start (PEPS)",
+      "Autofold ORVM",
+      "Electric Tailgate Release",
+      "Cooled Glovebox & Rear AC Vents",
+      "6 Airbags as Standard & ABS with EBD",
+      "iRA.ev Connectivity with 40+ Connected Features",
+    ];
+    if (n.includes("PURE")) return [
+      "20.32 cm (8\") Touchscreen Infotainment System",
+      "Wireless Android Auto & Apple CarPlay",
+      "HD Rear View Camera & Rear Defogger",
+      "USB Charger Front C+C (65W)",
+      "Day/Night IRVM & Follow-me-home Headlamps",
+      "Electrically Adjustable ORVMs with Turn Indicators",
+      "All 4 Power Windows (iToggle)",
+      "R14 Wheel Covers & Shark Fin Antenna with GPS",
+      "Fabricia Luxe Dashboard & Sportluxe Steering Wheel",
+      "6 Airbags as Standard & ABS with EBD",
+      "Digital Island Cluster & Fully Automatic Temperature Control",
+    ];
+    return [
+      "Fabricia Luxe Dashboard & Sportluxe Steering Wheel",
+      "Premium Melange Fabric Seats & Chrome Line Door Handles",
+      "6 Airbags as Standard & ABS with EBD",
+      "Rear Parking Sensors & i-TPMS & ISOFIX",
+      "Digital Island Cluster with Multi Drive Modes (City/Sport)",
+      "Multi Mode Regen with Regen Selector",
+      "Fully Automatic Temperature Control",
+      "12V Power Socket in Central Console",
+    ];
+  }
+
   return ["Please refer to the official vehicle brochure for active features."];
 }
 
@@ -906,6 +954,39 @@ export const CARS: Record<CarKey, CarDetails> = {
       ],
     },
   },
+  TIAGO: {
+    label: "Tata Tiago", emoji: "🚗", color: "#10b981",
+    variants: {
+      "Petrol MT": [
+        { name: "SMART", ex: 469990, ins: 31269, rto: 56883, tcs: 0, onroad: 558142 },
+        { name: "PURE", ex: 549990, ins: 34597, rto: 65859, tcs: 0, onroad: 650445 },
+        { name: "PURE PLUS", ex: 599990, ins: 36676, rto: 71469, tcs: 0, onroad: 708135 },
+        { name: "PURE PLUS (A)", ex: 649990, ins: 38756, rto: 77079, tcs: 0, onroad: 765824 },
+        { name: "CREATIVE", ex: 699990, ins: 40835, rto: 82689, tcs: 0, onroad: 823514 },
+        { name: "CREATIVE PLUS", ex: 729990, ins: 42083, rto: 86055, tcs: 0, onroad: 858128 },
+      ],
+      "Petrol AMT": [
+        { name: "PURE AMT", ex: 599990, ins: 36676, rto: 71469, tcs: 0, onroad: 708135 },
+        { name: "PURE PLUS AMT", ex: 654990, ins: 38964, rto: 77640, tcs: 0, onroad: 771593 },
+        { name: "PURE PLUS (A) AMT", ex: 704990, ins: 41043, rto: 83250, tcs: 0, onroad: 829283 },
+        { name: "CREATIVE AMT", ex: 754990, ins: 43123, rto: 88860, tcs: 0, onroad: 886972 },
+        { name: "CREATIVE PLUS AMT", ex: 784990, ins: 44370, rto: 92226, tcs: 0, onroad: 921586 },
+      ],
+      "CNG MT": [
+        { name: "SMART iCNG", ex: 579990, ins: 35844, rto: 51477, tcs: 0, onroad: 667311 },
+        { name: "PURE iCNG", ex: 649990, ins: 38756, rto: 57189, tcs: 0, onroad: 745935 },
+        { name: "PURE PLUS iCNG", ex: 699990, ins: 40835, rto: 61269, tcs: 0, onroad: 802094 },
+        { name: "PURE PLUS (A) iCNG", ex: 749990, ins: 42915, rto: 65349, tcs: 0, onroad: 858254 },
+        { name: "CREATIVE iCNG", ex: 799990, ins: 44994, rto: 69429, tcs: 0, onroad: 914413 },
+      ],
+      "CNG AMT": [
+        { name: "PURE iCNG AMT", ex: 704990, ins: 41043, rto: 61677, tcs: 0, onroad: 807710 },
+        { name: "PURE PLUS iCNG AMT", ex: 754990, ins: 43123, rto: 65757, tcs: 0, onroad: 863870 },
+        { name: "PURE PLUS (A) iCNG AMT", ex: 804990, ins: 45202, rto: 69837, tcs: 0, onroad: 920029 },
+        { name: "CREATIVE iCNG AMT", ex: 854990, ins: 47282, rto: 73917, tcs: 0, onroad: 976189 },
+      ],
+    },
+  },
 };
 
 // Simple voice command parser for automatic configurations
@@ -925,7 +1006,7 @@ export function parseVoice(
 
   // Custom keyword set to prevent eating technical terms or vehicle models
   const CAR_KEYWORDS = new Set([
-    "harrier", "safari", "curvv", "curv", "sierra",
+    "harrier", "safari", "curvv", "curv", "sierra", "altroz", "punch", "nexon", "tiago",
     "petrol", "diesel", "electric", "ev",
     "manual", "mt", "automatic", "at", "dca", "dct",
     "black", "dark", "dk", "rdk", "oberon", "gold", "flame", "opera", "dayton", "horizon", "forest", "nebula",
@@ -1208,6 +1289,14 @@ export const VEHICLE_COLORS: Record<CarKey, Array<{ name: string; hex: string }>
     { name: "Pristine White", hex: "#fafafa" },
     { name: "Daytona Grey", hex: "#4b5563" },
   ],
+  TIAGO: [
+    { name: "Dehradun Dew (Dual Tone)", hex: "#c9e3bc" },
+    { name: "Sobo Surge (Single Tone)", hex: "#f2c5be" },
+    { name: "Pangong Pulse (Single/Dual)", hex: "#aad3e8" },
+    { name: "Pure Grey (Single/Dual)", hex: "#8a9499" },
+    { name: "Daytona Grey (Single/Dual)", hex: "#4b5563" },
+    { name: "Pristine White (Single/Dual)", hex: "#fafafa" },
+  ],
 };
 
 // Returns only the colors that apply to the given variant
@@ -1316,9 +1405,17 @@ export function getEligibleColors(carKey: CarKey, variantName: string): Array<{ 
     }
   }
 
-  if (carKey === "ALTROZ" || carKey === "PUNCH" || carKey === "NEXON") {
+  if (carKey === "ALTROZ" || carKey === "PUNCH" || carKey === "NEXON" || carKey === "TIAGO") {
     if (isDarkVariant) {
       return allColors.filter(c => c.name.toLowerCase().includes("black") || c.name.toLowerCase().includes("dark"));
+    }
+    if (carKey === "TIAGO") {
+      if (vUpper.includes("SMART")) {
+        return allColors.filter(c => ["PANGONG PULSE", "PURE GREY", "DAYTONA GREY", "PRISTINE WHITE"].some(name => c.name.toUpperCase().includes(name)));
+      }
+      if (vUpper.includes("PURE")) {
+        return allColors.filter(c => ["SOBO SURGE", "PANGONG PULSE", "PURE GREY", "DAYTONA GREY", "PRISTINE WHITE"].some(name => c.name.toUpperCase().includes(name)));
+      }
     }
     return allColors;
   }

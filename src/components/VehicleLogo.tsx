@@ -29,7 +29,8 @@ export default function VehicleLogo({
     SIERRA: "#3b82f6",  // Blue
     ALTROZ: "#eab308",  // Yellow
     PUNCH: "#f97316",   // Orange/Bronze
-    NEXON: "#8b5cf6"    // Purple
+    NEXON: "#8b5cf6",   // Purple
+    TIAGO: "#10b981"    // Emerald/Mint (EV)
   }[normalizedKey] || "#a1a1aa";
 
   const renderLogo = () => {
@@ -337,6 +338,66 @@ export default function VehicleLogo({
               <circle cx="76" cy="33" r="7.5" fill="#ffffff" stroke="#3b82f6" strokeWidth="1.5" />
               <circle cx="22" cy="33" r="3.5" stroke={isSelected ? "#3b82f6" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
               <circle cx="76" cy="33" r="3.5" stroke={isSelected ? "#3b82f6" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
+            </g>
+          </svg>
+        );
+
+      case "TIAGO":
+        return (
+          <svg
+            viewBox="0 0 100 50"
+            className="w-full h-full drop-shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all duration-300"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Background glow when selected */}
+            {isSelected && (
+              <circle cx="50" cy="25" r="20" fill="url(#tiagoGlow)" opacity="0.4" />
+            )}
+
+            <defs>
+              <radialGradient id="tiagoGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#10b981" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#10b981" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+
+            {/* Smart Hatchback Silhouette */}
+            <g
+              stroke={isSelected ? "#10b981" : "rgba(113,113,122,0.5)"}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              {/* Sleek hatchback sloping outline */}
+              <path
+                d="M 6 32 C 12 30, 18 28, 25 21 C 31 16, 48 14, 64 20 C 72 23, 80 27, 85 30 L 89 31.5"
+                stroke="#10b981"
+                strokeWidth={isSelected ? "3" : "2"}
+                className="transition-all duration-300"
+              />
+
+              {/* Connected tail-lamp/hatch visual or rear spoiler */}
+              <path d="M 85 30 L 88 35 L 85 40 L 78 40" stroke="#10b981" strokeWidth="1" />
+
+              {/* Windows layout */}
+              <path
+                d="M 30 19 L 48 16 L 62 19 L 59 23 C 51 24, 38 24, 30 19 Z"
+                fill={isSelected ? "rgba(16, 185, 129, 0.12)" : "rgba(226,232,240,0.5)"}
+                stroke="#10b981"
+                strokeWidth="1"
+              />
+
+              {/* Lower baseline */}
+              <path d="M 4 33 L 89 33" stroke={isSelected ? "rgba(16, 185, 129, 0.4)" : "rgba(113,113,122,0.3)"} strokeWidth="1" />
+
+              {/* Sporty R14 hyperstyle wheels */}
+              <circle cx="24" cy="33" r="7.4" fill="#ffffff" stroke="#10b981" strokeWidth="1.8" />
+              <circle cx="68" cy="33" r="7.4" fill="#ffffff" stroke="#10b981" strokeWidth="1.8" />
+
+              {/* Diamond cut internal styling */}
+              <circle cx="24" cy="33" r="2.8" stroke={isSelected ? "#10b981" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
+              <circle cx="68" cy="33" r="2.8" stroke={isSelected ? "#10b981" : "rgba(113,113,122,0.5)"} strokeWidth="1" />
             </g>
           </svg>
         );
